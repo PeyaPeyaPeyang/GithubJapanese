@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Github Japanese
-// @namespace    com.github.TeamKun
+// @namespace    Peyang
 // @version      0.1
 // @description  Githubを日本語化する
 // @author       Peyang
