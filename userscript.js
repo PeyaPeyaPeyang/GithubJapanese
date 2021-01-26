@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Github Japanese
-// @namespace    Peyang
+// @namespace    com.github.TeamKun
 // @version      0.1
 // @description  Githubを日本語化する
 // @author       Peyang
@@ -634,7 +634,7 @@ var json = [
 		]
 	},
 	{
-        "name": "Repository Top Page",
+        "name": "Global repository top page",
 		"path": "^\/[a-zA-Z0-9](?:[a-zA-Z0-9]|-(?=[a-zA-Z0-9])){0,38}\/[a-zA-Z0-9](?:[a-zA-Z0-9]|-(?=[a-zA-Z0-9])){0,100}(/.*)?",
 		"rules": [
             {
@@ -857,94 +857,6 @@ var json = [
 			}
 		]
 	},
-    {
-        "name": "Global repository watcher page",
-		"path": "^\/[a-zA-Z0-9](?:[a-zA-Z0-9]|-(?=[a-zA-Z0-9])){0,38}\/[a-zA-Z0-9](?:[a-zA-Z0-9]|-(?=[a-zA-Z0-9])){0,100}\/watchers",
-        "rules": [
-            {
-                "selectors": [
-                    "#repos > h2"
-                ],
-                "properties": [],
-                "replace": "Watchers",
-                "translate": "視聴者"
-            },
-            {
-                "selectors": [
-                    "#repos > div > h3.mb-1"
-                ],
-                "properties": [],
-                "translate": "このリポジトリをWatchしているユーザはいません。あなたが最初かもしれません！"
-            },
-            {
-                "selectors": [
-                    "#repos > div > p"
-                ],
-                "properties": [],
-                "replace": "#repos > div > p > a",
-                "format": "{0}をクリックして、GitHubのWatchの仕組みを学ぶ。"
-            },
-            {
-                "selectors": [
-                    "#repos > div > p > a"
-                ],
-                "properties": [],
-                "translate": "こちら"
-            }
-        ]
-    },
-    {
-        "name": "Global stargazers page",
-        "path": "^\/[a-zA-Z0-9](?:[a-zA-Z0-9]|-(?=[a-zA-Z0-9])){0,38}\/[a-zA-Z0-9](?:[a-zA-Z0-9]|-(?=[a-zA-Z0-9])){0,100}\/stargazers",
-        "rules": [
-            {
-                "selectors": [
-                    "#repos > h2"
-                ],
-                "properties": [],
-                "replace": "Stargazers",
-                "translate": "スターをしているユーザ"
-            },
-            {
-                "selectors": [
-                    "#repos > div > h3.mb-1"
-                ],
-                "properties": [],
-                "translate": "このリポジトリにスターをしているユーザはいません。あなたが最初かもしれません！"
-            },
-            {
-                "selectors": [
-                    "#repos > div > nav > a"
-                ],
-                "properties": [],
-                "replace": "All",
-                "translate": "すべて"
-            },
-            {
-                "selectors": [
-                    "#repos > div > nav > a"
-                ],
-                "properties": [],
-                "replace": "You know",
-                "translate": "あなたが知っているユーザ"
-            },
-            {
-                "selectors": [
-                    "#repos > div > p"
-                ],
-                "properties": [],
-                "replace": "#repos > div > p > a",
-                "format": "{0}をクリックして、GitHubのスターの仕組みを学ぶ。"
-            },
-            {
-                "selectors": [
-                    "#repos > div > p > a"
-                ],
-                "properties": [],
-                "translate": "こちら"
-            }
-        ]
-    },
     {
         "name": "Repository code page",
         "path": "^\/[a-zA-Z0-9](?:[a-zA-Z0-9]|-(?=[a-zA-Z0-9])){0,38}\/[a-zA-Z0-9](?:[a-zA-Z0-9]|-(?=[a-zA-Z0-9])){0,100}(\/)?$",
@@ -1305,14 +1217,6 @@ var json = [
             },
             {
                 "selectors": [
-                    "#repo_metadata_form > div.form-group.mt-3.mb-0 > label"
-                ],
-                "properties": [],
-                "replace": "Packages",
-                "translate": "パッケージ"
-            },
-            {
-                "selectors": [
                     "#repo_metadata_form > div.form-group.mt-3.mb-0 > label",
                     "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-3 > div > div > div > h2 > a"
                 ],
@@ -1320,7 +1224,6 @@ var json = [
                 "replace": "Environments",
                 "translate": "環境"
             },
-
             {
                 "selectors": [
                     "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-3 > div > div.BorderGrid-row.hide-sm.hide-md > div > div.f4.mt-3.text-gray.text-italic"
@@ -1373,14 +1276,15 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-3 > div > div:nth-child(2) > div > div.text-small.color-text-secondary"
+                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-3 > div > div > div > div.text-small.color-text-secondary"
                 ],
                 "properties": [],
+                "replace": "No releases published",
                 "translate": "リリースは公開されていません"
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-3 > div > div:nth-child(2) > div > a > div > div.d-flex > span.Label.Label--green.flex-shrink-0"
+                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-3 > div > div > div > a > div > div.d-flex > span.Label.Label--green.flex-shrink-0"
                 ],
                 "properties": [],
                 "replace": "Latest",
@@ -1388,10 +1292,52 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-3 > div > div:nth-child(2) > div > div > a"
+                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-3 > div > div > div > div > a"
                 ],
                 "properties": [],
+                "replace": "Create a new release",
                 "translate": "リリースを公開する"
+            },
+            {
+                "selectors": [
+                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-3 > div > div > div > div > a"
+                ],
+                "properties": [],
+                "replace": "Publish your first release",
+                "translate": "あなたの最初のリリースを公開する"
+            },
+            {
+                "selectors": [
+                    "#repo_metadata_form > div.form-group.mt-3.mb-0 > label",
+                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-3 > div > div > div > h2 > a"
+                ],
+                "properties": [],
+                "replace": "Packages",
+                "translate": "パッケージ"
+            },
+            {
+                "selectors": [
+                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-3 > div > div > div > div"
+                ],
+                "properties": [],
+                "replace": "No packages published",
+                "translate": "パッケージは公開されていません"
+            },
+            {
+                "selectors": [
+                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-3 > div > div > div > div > a"
+                ],
+                "properties": [],
+                "replace": "Create a new package",
+                "translate": "パッケージを公開する"
+            },
+            {
+                "selectors": [
+                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-3 > div > div > div > div > a"
+                ],
+                "properties": [],
+                "replace": "Publish your first package",
+                "translate": "あなたの最初のパッケージを公開する"
             },
             {
                 "selectors": [
@@ -1401,6 +1347,94 @@ var json = [
                 "replace": "Languages",
                 "translate": "使用されている言語"
             },
+        ]
+    },
+    {
+        "name": "Repository watchers page",
+		"path": "^\/[a-zA-Z0-9](?:[a-zA-Z0-9]|-(?=[a-zA-Z0-9])){0,38}\/[a-zA-Z0-9](?:[a-zA-Z0-9]|-(?=[a-zA-Z0-9])){0,100}\/watchers",
+        "rules": [
+            {
+                "selectors": [
+                    "#repos > h2"
+                ],
+                "properties": [],
+                "replace": "Watchers",
+                "translate": "視聴者"
+            },
+            {
+                "selectors": [
+                    "#repos > div > h3.mb-1"
+                ],
+                "properties": [],
+                "translate": "このリポジトリをWatchしているユーザはいません。あなたが最初かもしれません！"
+            },
+            {
+                "selectors": [
+                    "#repos > div > p"
+                ],
+                "properties": [],
+                "replace": "#repos > div > p > a",
+                "format": "{0}をクリックして、GitHubのWatchの仕組みを学ぶ。"
+            },
+            {
+                "selectors": [
+                    "#repos > div > p > a"
+                ],
+                "properties": [],
+                "translate": "こちら"
+            }
+        ]
+    },
+    {
+        "name": "Repository stargazers page",
+        "path": "^\/[a-zA-Z0-9](?:[a-zA-Z0-9]|-(?=[a-zA-Z0-9])){0,38}\/[a-zA-Z0-9](?:[a-zA-Z0-9]|-(?=[a-zA-Z0-9])){0,100}\/stargazers",
+        "rules": [
+            {
+                "selectors": [
+                    "#repos > h2"
+                ],
+                "properties": [],
+                "replace": "Stargazers",
+                "translate": "スターをしているユーザ"
+            },
+            {
+                "selectors": [
+                    "#repos > div > h3.mb-1"
+                ],
+                "properties": [],
+                "translate": "このリポジトリにスターをしているユーザはいません。あなたが最初かもしれません！"
+            },
+            {
+                "selectors": [
+                    "#repos > div > nav > a"
+                ],
+                "properties": [],
+                "replace": "All",
+                "translate": "すべて"
+            },
+            {
+                "selectors": [
+                    "#repos > div > nav > a"
+                ],
+                "properties": [],
+                "replace": "You know",
+                "translate": "あなたが知っているユーザ"
+            },
+            {
+                "selectors": [
+                    "#repos > div > p"
+                ],
+                "properties": [],
+                "replace": "#repos > div > p > a",
+                "format": "{0}をクリックして、GitHubのスターの仕組みを学ぶ。"
+            },
+            {
+                "selectors": [
+                    "#repos > div > p > a"
+                ],
+                "properties": [],
+                "translate": "こちら"
+            }
         ]
     },
     {
@@ -2146,9 +2180,9 @@ var json = [
 
 var enable = true;
 
-main();
+main(null);
 
-function main() {
+function main(domr) {
     if (!enable)
         return;
     json.forEach((rules) => {
@@ -2163,6 +2197,8 @@ function main() {
             var append = obj.append;
             doms.forEach((domc) => {
                 domc.forEach((dom) => {
+                    if (domr != undefined && domr != null && dom != null && !dom == domr)
+                        return;
                     props.forEach((prop) => {
                         tr(dom, translate, prop, obj["replace"], format, contains, append);
                     });
@@ -2180,20 +2216,38 @@ function main() {
     });
 }
 
-var timer = 0;
-
 var config = {
     childList: true,
-    subtree: true
+    subtree: true,
+    attributeOldValue: false,
+    attributes: false,
+    characterData: false
 };
 
-var observer = new MutationObserver(() => {
+var observer = new MutationObserver((r) => {
+    var flag = false;
+    r.forEach((b) => {
+        if (b.target)
+            if (b.target.className)
+                if (b.target.className.includes("Code"))
+                flag = true;
+        if (b.nextSibling)
+            if (b.nextSibling.className)
+                if (b.nextSibling.className.includes("Code"))
+                flag = true;
+        if (b.previousSibling)
+            if (b.previousSibling.className)
+                if (b.previousSibling.className.includes("Code"))
+                flag = true;
+    });
+    if (flag)
+        return;
     observer.disconnect();
-    main();
+    console.log(r)
+    main(null);
     observer.observe(document, config);
 });
-
-observer.observe(document, config);
+    observer.observe(document, config);
 
 document.kill = () => {
     enable = false;
@@ -2219,18 +2273,34 @@ function tr(dom, translate, prop, replace, format, contains, append) {
             if (contains != undefined && contains != null && dom[prop] != null && dom[prop] != undefined && !cca(dom[prop], contains))
                 return;
             if (replace != null && dom[prop] != undefined)
-                dom[prop] = dom[prop].replace(replace, translate) + (append != undefined && append != null ? append: "");
+            {
+                var a = dom[prop].replace(replace, translate) + (append != undefined && append != null ? append: "");
+                if (a != dom[prop])
+                    dom[prop] = a;
+            }
             else
-                dom[prop] = translate + (append != undefined && append != null ? append: "");
+            {
+                var ate = translate + (append != undefined && append != null ? append: "");
+                if (ate != dom[prop])
+                    dom[prop] = ate;
+            }
         }
         else
         {
             if (contains != undefined && contains != null && !cca(dom.innerHTML, contains))
                 return;
             if (replace != null)
-                dom.innerHTML = dom.innerHTML.replace(replace, translate) + (append != undefined && append != null ? append: "");
+            {
+                var kawr = dom.innerHTML.replace(replace, translate) + (append != undefined && append != null ? append: "");
+                if (dom.innerHTML != kawr)
+                    dom.innerHTML = kawr
+            }
             else
-                dom.innerHTML = translate + (append != undefined && append != null ? append: "");
+            {
+                var sar = translate + (append != undefined && append != null ? append: "");
+                if ( dom.innerHTML != sar)
+                    dom.innerHTML = sar;
+            }
         }
 
         return;
@@ -2246,10 +2316,18 @@ function tr(dom, translate, prop, replace, format, contains, append) {
     {
         if (document.querySelector(replace) != null)
             if (contains != undefined && contains != null && dom[prop] != null && dom[prop] != undefined && cca(dom[prop], contains))
-                dom[prop] = format.format(document.querySelector(replace).outerHTML) + (append != undefined && append != null ? append: "");
+            {
+                var propaw = format.format(document.querySelector(replace).outerHTML) + (append != undefined && append != null ? append: "");
+                if (dom[prop] != propaw)
+                    dom[prop] = propaw;
+            }
     }
     else
         if (document.querySelector(replace) != null)
               if (contains != undefined && contains != null && cca(dom.innerHTML, contains))
-                  dom.innerHTML = format.format(document.querySelector(replace).outerHTML) + (append != undefined && append != null ? append: "");
+              {
+                  var inn =  format.format(document.querySelector(replace).outerHTML) + (append != undefined && append != null ? append: "");
+                  if (inn != dom.innerHTML)
+                      dom.innerHTML = inn;
+              }
 }
