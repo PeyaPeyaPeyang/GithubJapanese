@@ -7,3 +7,4 @@ GitHubを日本語化するユーザスクリプトです。
 ## 概要
 GitHubの非公式日本語翻訳です。
 ## スクリーンショット
+![a](https://user-images.githubusercontent.com/42040068/105816585-d597fa80-5ff7-11eb-8745-5f68b6efb20c.png)
