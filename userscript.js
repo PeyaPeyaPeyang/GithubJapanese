@@ -9,9 +9,81 @@
 // ==/UserScript==
 
 var json = [
+    {
+        "name": "Notification",
+        "path": "^\/.*",
+        "selector": "div.flash.flash-notice div",
+        "rules": [
+            {
+                "properties": [],
+                "replace": "Workflow enabled successfully.",
+                "translate": "ワークフローは正常に有効化されました。"
+            },
+            {
+                "properties": [],
+                "replace": "Workflow disabled successfully.",
+                "translate": "ワークフローは正常に無効化されました。"
+            },
+            {
+                "properties": [],
+                "replace": "Workflow run deleted successfully",
+                "translate": "ワークフロー実行を正常に削除しました。"
+            },
+        ]
+    },
+    {
+        "name": "Label",
+        "path": "^\/.*",
+        "selector": "span.Label",
+        "rules": [
+            {
+                "selectors": [
+                    "a.State"
+                ],
+                "properties": [],
+                "replace": "Open",
+                "translate": "オープン"
+            },
+            {
+                "properties": [],
+                "replace": "Close",
+                "translate": "クローズ"
+            },
+            {
+                "properties": [],
+                "replace": "Closed",
+                "translate": "クローズド"
+            },
+            {
+                "properties": [],
+                "replace": "default",
+                "translate": "デフォルト"
+            },
+            {
+                "properties": [],
+                "replace": "Private",
+                "translate": "プライベート"
+            },
+            {
+                "properties": [],
+                "replace": "Latest",
+                "translate": "最新"
+            },
+            {
+                "properties": [],
+                "replace": "Suggested",
+                "translate": "おすすめ"
+            },
+            {
+                "properties": [],
+                "replace": "",
+                "translate": ""
+            },
+        ]
+    },
 	{
         "name": "Global",
-		"page": "^/.*",
+		"path": "^\/.*",
 		"rules": [
 			{
 				"selectors": [
@@ -374,7 +446,16 @@ var json = [
                     "time-ago"
 				],
 				"properties": [],
-				"replace": "mintues ago",
+				"replace": "hour ago",
+				"translate": "時間前"
+			},
+			{
+				"selectors": [
+					"relative-time",
+                    "time-ago"
+				],
+				"properties": [],
+				"replace": "minutes ago",
 				"translate": "分前"
 			},
 			{
@@ -599,6 +680,14 @@ var json = [
 					"#dashboard > div > div.mt-2.mb-4.js-recent-activity-container.Details.js-details-container > div > ul > li > div > div.break-word.lh-condensed.text-gray.f6.mt-1 > span.d-inline-block.f6.text-gray"
 				],
 				"properties": [],
+				"replace": "opened this issue",
+				"translate": "がオープンしました。"
+			},
+			{
+				"selectors": [
+					"#dashboard > div > div.mt-2.mb-4.js-recent-activity-container.Details.js-details-container > div > ul > li > div > div.break-word.lh-condensed.text-gray.f6.mt-1 > span.d-inline-block.f6.text-gray"
+				],
+				"properties": [],
 				"replace": "You",
 				"translate": "あなた"
 			},
@@ -635,20 +724,11 @@ var json = [
 	},
 	{
         "name": "Global repository top page",
-		"path": "^\/[a-zA-Z0-9](?:[a-zA-Z0-9]|-(?=[a-zA-Z0-9])){0,38}\/[a-zA-Z0-9](?:[a-zA-Z0-9]|-(?=[a-zA-Z0-9])){0,100}(/.*)?",
+		"path": "^\/[a-zA-Z0-9](?:[a-zA-Z0-9]|-(?=[a-zA-Z0-9])){0,38}\/[a-zA-Z0-9](?:[a-zA-Z0-9]|-(?=[a-zA-Z0-9])){0,100}((/.*)*)",
 		"rules": [
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.bg-gray-light.pt-3.hide-full-screen.mb-5 > div.d-flex.mb-3.px-3.px-md-4.px-lg-5 > div > h1 > span.Label.Label--outline.v-align-middle",
-                    "#js-repo-pjax-container > div.bg-gray-light.pt-3.hide-full-screen.mb-5 > div > div > h1 > span.Label.Label--outline.v-align-middle"
-                ],
-                "properties": [],
-                "replace": "Private",
-                "translate": "プライベート"
-            },
-            {
-                "selectors": [
-                    "#js-repo-pjax-container > div.bg-gray-light.pt-3.hide-full-screen.mb-5 > div > ul > li:nth-child(1) > notifications-list-subscription-form > details > summary > span"
+                    "div.bg-gray-light.pt-3.hide-full-screen.mb-5 > div > ul > li:nth-child(1) > notifications-list-subscription-form > details > summary > span"
                 ],
                 "properties": [],
                 "replace": "Watch",
@@ -656,7 +736,7 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.bg-gray-light.pt-3.hide-full-screen.mb-5 > div > ul > li:nth-child(1) > notifications-list-subscription-form > details > summary > span"
+                    "div.bg-gray-light.pt-3.hide-full-screen.mb-5 > div > ul > li:nth-child(1) > notifications-list-subscription-form > details > summary > span"
                 ],
                 "properties": [],
                 "replace": "Unwatch",
@@ -664,8 +744,8 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.bg-gray-light.pt-3.hide-full-screen.mb-5 > div.d-flex.mb-3.px-3.px-md-4.px-lg-5 > ul > li:nth-child(1) > notifications-list-subscription-form > details > details-menu > div > header > h3",
-                    "#js-repo-pjax-container > div.bg-gray-light.pt-3.hide-full-screen.mb-5 > div > ul > li:nth-child(1) > notifications-list-subscription-form > details > details-menu > div > header > h3"
+                    "div.bg-gray-light.pt-3.hide-full-screen.mb-5 > div.d-flex.mb-3.px-3.px-md-4.px-lg-5 > ul > li:nth-child(1) > notifications-list-subscription-form > details > details-menu > div > header > h3",
+                    "div.bg-gray-light.pt-3.hide-full-screen.mb-5 > div > ul > li:nth-child(1) > notifications-list-subscription-form > details > details-menu > div > header > h3"
                 ],
                 "properties": [],
                 "replace": "Notifications",
@@ -673,79 +753,79 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.bg-gray-light.pt-3.hide-full-screen.mb-5 > div > ul > li:nth-child(1) > notifications-list-subscription-form > details > details-menu > div > div > form > button:nth-child(3) > div > div.f5.text-bold"
+                    "div.bg-gray-light.pt-3.hide-full-screen.mb-5 > div > ul > li:nth-child(1) > notifications-list-subscription-form > details > details-menu > div > div > form > button:nth-child(3) > div > div.f5.text-bold"
                 ],
                 "properties": [],
                 "translate": "関係しているものと@メンション"
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.bg-gray-light.pt-3.hide-full-screen.mb-5 > div > ul > li:nth-child(1) > notifications-list-subscription-form > details > details-menu > div > div > form > button:nth-child(3) > div > div.text-small.text-gray.text-normal.pb-1"
+                    "div.bg-gray-light.pt-3.hide-full-screen.mb-5 > div > ul > li:nth-child(1) > notifications-list-subscription-form > details > details-menu > div > div > form > button:nth-child(3) > div > div.text-small.text-gray.text-normal.pb-1"
                 ],
                 "properties": [],
                 "translate": "自分に関係していたり、@メンションを受け取った場合のみ通知します。"
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.bg-gray-light.pt-3.hide-full-screen.mb-5 > div > ul > li:nth-child(1) > notifications-list-subscription-form > details > details-menu > div > div > form > button:nth-child(4) > div > div.f5.text-bold"
+                    "div.bg-gray-light.pt-3.hide-full-screen.mb-5 > div > ul > li:nth-child(1) > notifications-list-subscription-form > details > details-menu > div > div > form > button:nth-child(4) > div > div.f5.text-bold"
                 ],
                 "properties": [],
                 "translate": "すべてのアクティビティ"
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.bg-gray-light.pt-3.hide-full-screen.mb-5 > div > ul > li:nth-child(1) > notifications-list-subscription-form > details > details-menu > div > div > form > button:nth-child(4) > div > div.text-small.text-gray.text-normal.pb-1"
+                    "div.bg-gray-light.pt-3.hide-full-screen.mb-5 > div > ul > li:nth-child(1) > notifications-list-subscription-form > details > details-menu > div > div > form > button:nth-child(4) > div > div.text-small.text-gray.text-normal.pb-1"
                 ],
                 "properties": [],
                 "translate": "すべてのこのリポジトリの通知を受け取ります。"
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.bg-gray-light.pt-3.hide-full-screen.mb-5 > div > ul > li:nth-child(1) > notifications-list-subscription-form > details > details-menu > div > div > form > button:nth-child(5) > div > div.f5.text-bold"
+                    "div.bg-gray-light.pt-3.hide-full-screen.mb-5 > div > ul > li:nth-child(1) > notifications-list-subscription-form > details > details-menu > div > div > form > button:nth-child(5) > div > div.f5.text-bold"
                 ],
                 "properties": [],
                 "translate": "無視"
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.bg-gray-light.pt-3.hide-full-screen.mb-5 > div > ul > li:nth-child(1) > notifications-list-subscription-form > details > details-menu > div > div > form > button:nth-child(5) > div > div.text-small.text-gray.text-normal.pb-1"
+                    "div.bg-gray-light.pt-3.hide-full-screen.mb-5 > div > ul > li:nth-child(1) > notifications-list-subscription-form > details > details-menu > div > div > form > button:nth-child(5) > div > div.text-small.text-gray.text-normal.pb-1"
                 ],
                 "properties": [],
                 "translate": "通知を受け取ることはありません。"
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.bg-gray-light.pt-3.hide-full-screen.mb-5 > div > ul > li:nth-child(1) > notifications-list-subscription-form > details > details-menu > div > div > button > div > div.d-flex.flex-items-start.flex-justify-between > div.f5.text-bold",
-                    "#js-repo-pjax-container > div.bg-gray-light.pt-3.hide-full-screen.mb-5 > div > ul > li:nth-child(1) > notifications-list-subscription-form > details > details-dialog > div > form > header.d-none.d-sm-flex.flex-items-start.pt-1 > h1"
+                    "div.bg-gray-light.pt-3.hide-full-screen.mb-5 > div > ul > li:nth-child(1) > notifications-list-subscription-form > details > details-menu > div > div > button > div > div.d-flex.flex-items-start.flex-justify-between > div.f5.text-bold",
+                    "div.bg-gray-light.pt-3.hide-full-screen.mb-5 > div > ul > li:nth-child(1) > notifications-list-subscription-form > details > details-dialog > div > form > header.d-none.d-sm-flex.flex-items-start.pt-1 > h1"
                 ],
                 "properties": [],
                 "translate": "カスタム"
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.bg-gray-light.pt-3.hide-full-screen.mb-5 > div > ul > li:nth-child(1) > notifications-list-subscription-form > details > details-menu > div > div > button > div > div.text-small.text-gray.text-normal.pb-1",
-                    "#js-repo-pjax-container > div.bg-gray-light.pt-3.hide-full-screen.mb-5 > div > ul > li:nth-child(1) > notifications-list-subscription-form > details > details-dialog > div > form > fieldset > legend > div"
+                    "div.bg-gray-light.pt-3.hide-full-screen.mb-5 > div > ul > li:nth-child(1) > notifications-list-subscription-form > details > details-menu > div > div > button > div > div.text-small.text-gray.text-normal.pb-1",
+                    "div.bg-gray-light.pt-3.hide-full-screen.mb-5 > div > ul > li:nth-child(1) > notifications-list-subscription-form > details > details-dialog > div > form > fieldset > legend > div"
                 ],
                 "properties": [],
                 "translate": "関係する通知と@メンションに加えて、受け取りたい通知を選びます。"
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.bg-gray-light.pt-3.hide-full-screen.mb-5 > div > ul > li:nth-child(2) > div > form.unstarred.js-social-form > button > span"
+                    "div.bg-gray-light.pt-3.hide-full-screen.mb-5 > div > ul > li:nth-child(2) > div > form.unstarred.js-social-form > button > span"
                 ],
                 "properties": [],
                 "translate": "スター"
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.bg-gray-light.pt-3.hide-full-screen.mb-5 > div > ul > li:nth-child(2) > div > form.starred.js-social-form > button > span"
+                    "div.bg-gray-light.pt-3.hide-full-screen.mb-5 > div > ul > li:nth-child(2) > div > form.starred.js-social-form > button > span"
                 ],
                 "properties": [],
                 "translate": "スターを外す"
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.bg-gray-light.pt-3.hide-full-screen.mb-5 > div > ul > li:nth-child(3) > div > details > summary"
+                    "div.bg-gray-light.pt-3.hide-full-screen.mb-5 > div > ul > li:nth-child(3) > div > details > summary"
                 ],
                 "properties": [],
                 "replace": "Fork",
@@ -753,7 +833,7 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.bg-gray-light.pt-3.hide-full-screen.mb-5 > div.d-flex.mb-3.px-3.px-md-4.px-lg-5 > ul > li:nth-child(1) > notifications-list-subscription-form > details > details-dialog > div > form > fieldset > div:nth-child(4) > label"
+                    "div.bg-gray-light.pt-3.hide-full-screen.mb-5 > div.d-flex.mb-3.px-3.px-md-4.px-lg-5 > ul > li:nth-child(1) > notifications-list-subscription-form > details > details-dialog > div > form > fieldset > div:nth-child(4) > label"
                 ],
                 "properties": [],
                 "replace": "Releases",
@@ -761,21 +841,21 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.bg-gray-light.pt-3.hide-full-screen.mb-5 > div.d-flex.mb-3.px-3.px-md-4.px-lg-5 > ul > li:nth-child(1) > notifications-list-subscription-form > details > details-dialog > div > form > div > button:nth-child(2)"
+                    "div.bg-gray-light.pt-3.hide-full-screen.mb-5 > div.d-flex.mb-3.px-3.px-md-4.px-lg-5 > ul > li:nth-child(1) > notifications-list-subscription-form > details > details-dialog > div > form > div > button:nth-child(2)"
                 ],
                 "properties": [],
                 "translate": "キャンセル"
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.bg-gray-light.pt-3.hide-full-screen.mb-5 > div.d-flex.mb-3.px-3.px-md-4.px-lg-5 > ul > li:nth-child(1) > notifications-list-subscription-form > details > details-dialog > div > form > div > button.btn.btn-sm.btn-primary.ml-2"
+                    "div.bg-gray-light.pt-3.hide-full-screen.mb-5 > div.d-flex.mb-3.px-3.px-md-4.px-lg-5 > ul > li:nth-child(1) > notifications-list-subscription-form > details > details-dialog > div > form > div > button.btn.btn-sm.btn-primary.ml-2"
                 ],
                 "properties": [],
                 "translate": "適用"
             },
 			{
 				"selectors": [
-					"#js-repo-pjax-container span[data-content=\"Code\"]"
+					"nav[data-pjax=\"#js-repo-pjax-container\"] span[data-content=\"Code\"]"
 				],
 				"properties": [],
                 "replace": "Code",
@@ -783,8 +863,8 @@ var json = [
 			},
 			{
 				"selectors": [
-					"#js-repo-pjax-container span[data-content=\"Issues\"]",
-                    "#js-repo-pjax-container > div.bg-gray-light.pt-3.hide-full-screen.mb-5 > div.d-flex.mb-3.px-3.px-md-4.px-lg-5 > ul > li:nth-child(1) > notifications-list-subscription-form > details > details-dialog > div > form > fieldset > div:nth-child(2) > label"
+					"nav[data-pjax=\"#js-repo-pjax-container\"] span[data-content=\"Issues\"]",
+                    "div.bg-gray-light.pt-3.hide-full-screen.mb-5 > div.d-flex.mb-3.px-3.px-md-4.px-lg-5 > ul > li:nth-child(1) > notifications-list-subscription-form > details > details-dialog > div > form > fieldset > div:nth-child(2) > label"
 				],
 				"properties": [],
                 "replace": "Issues",
@@ -792,8 +872,8 @@ var json = [
 			},
 			{
 				"selectors": [
-					"#js-repo-pjax-container span[data-content=\"Pull requests\"]",
-                    "#js-repo-pjax-container > div.bg-gray-light.pt-3.hide-full-screen.mb-5 > div.d-flex.mb-3.px-3.px-md-4.px-lg-5 > ul > li:nth-child(1) > notifications-list-subscription-form > details > details-dialog > div > form > fieldset > div:nth-child(3) > label"
+					"nav[data-pjax=\"#js-repo-pjax-container\"] span[data-content=\"Pull requests\"]",
+                    "div.bg-gray-light.pt-3.hide-full-screen.mb-5 > div.d-flex.mb-3.px-3.px-md-4.px-lg-5 > ul > li:nth-child(1) > notifications-list-subscription-form > details > details-dialog > div > form > fieldset > div:nth-child(3) > label"
 				],
 				"properties": [],
                 "replace": "Pull requests",
@@ -801,7 +881,7 @@ var json = [
 			},
 			{
 				"selectors": [
-					"#js-repo-pjax-container span[data-content=\"Discussions\"]"
+					"nav[data-pjax=\"#js-repo-pjax-container\"] span[data-content=\"Discussions\"]"
 				],
 				"properties": [],
 				"replace": "Discussions",
@@ -809,7 +889,7 @@ var json = [
 			},
 			{
 				"selectors": [
-					"#js-repo-pjax-container span[data-content=\"Actions\"]"
+					"nav[data-pjax=\"#js-repo-pjax-container\"] span[data-content=\"Actions\"]"
 				],
 				"properties": [],
 				"replace": "Actions",
@@ -817,7 +897,7 @@ var json = [
 			},
 			{
 				"selectors": [
-					"#js-repo-pjax-container span[data-content=\"Projects\"]"
+					"nav[data-pjax=\"#js-repo-pjax-container\"] span[data-content=\"Projects\"]"
                 ],
 				"properties": [],
 				"replace": "Projects",
@@ -825,7 +905,7 @@ var json = [
 			},
 			{
 				"selectors": [
-					"#js-repo-pjax-container span[data-content=\"Wiki\"]"
+					"nav[data-pjax=\"#js-repo-pjax-container\"] span[data-content=\"Wiki\"]"
 				],
 				"properties": [],
 				"replace": "Wiki",
@@ -833,7 +913,7 @@ var json = [
 			},
 			{
 				"selectors": [
-					"#js-repo-pjax-container span[data-content=\"Security\"]"
+					"nav[data-pjax=\"#js-repo-pjax-container\"] span[data-content=\"Security\"]"
 				],
 				"properties": [],
 				"replace": "Security",
@@ -841,7 +921,7 @@ var json = [
 			},
 			{
 				"selectors": [
-					"#js-repo-pjax-container span[data-content=\"Insights\"]"
+					"nav[data-pjax=\"#js-repo-pjax-container\"] span[data-content=\"Insights\"]"
 				],
 				"properties": [],
 				"replace": "Insights",
@@ -849,7 +929,7 @@ var json = [
 			},
 			{
 				"selectors": [
-					"#js-repo-pjax-container span[data-content=\"Settings\"]"
+					"nav[data-pjax=\"#js-repo-pjax-container\"] span[data-content=\"Settings\"]"
 				],
 				"properties": [],
 				"replace": "Settings",
@@ -894,13 +974,6 @@ var json = [
             },
             {
                 "selectors": [
-                    "#ref-list-branches > div > a:nth-child(1) > span.Label.Label--gray.flex-self-start"
-                ],
-                "properties": [],
-                "translate": "デフォルトブランチ"
-            },
-            {
-                "selectors": [
                     "#ref-list-branches > footer > a"
                 ],
                 "properties": [],
@@ -908,14 +981,14 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.file-navigation.mb-3.d-flex.flex-items-start > div.flex-self-center.ml-3.flex-self-stretch.d-none.d-lg-flex.flex-items-center.lh-condensed-ultra > a:nth-child(1) > span"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.file-navigation.mb-3.d-flex.flex-items-start > div.flex-self-center.ml-3.flex-self-stretch.d-none.d-lg-flex.flex-items-center.lh-condensed-ultra > a:nth-child(1) > span"
                 ],
                 "properties": [],
                 "translate": "ブランチ"
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.file-navigation.mb-3.d-flex.flex-items-start > div.flex-self-center.ml-3.flex-self-stretch.d-none.d-lg-flex.flex-items-center.lh-condensed-ultra > a.ml-3.link-gray-dark.no-underline > span"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.file-navigation.mb-3.d-flex.flex-items-start > div.flex-self-center.ml-3.flex-self-stretch.d-none.d-lg-flex.flex-items-center.lh-condensed-ultra > a.ml-3.link-gray-dark.no-underline > span"
                 ],
                 "properties": [],
                 "translate": "タグ"
@@ -956,14 +1029,14 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.file-navigation.mb-3.d-flex.flex-items-start > a"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.file-navigation.mb-3.d-flex.flex-items-start > a"
                 ],
                 "properties": [],
                 "translate": "ファイルを開く"
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.file-navigation.mb-3.d-flex.flex-items-start > details > summary > span.d-none.d-md-flex.flex-items-center"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.file-navigation.mb-3.d-flex.flex-items-start > details > summary > span.d-none.d-md-flex.flex-items-center"
                 ],
                 "properties": [],
                 "replace": "Add file",
@@ -971,21 +1044,21 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.file-navigation.mb-3.d-flex.flex-items-start > details > div > ul > li:nth-child(3) > form > button"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.file-navigation.mb-3.d-flex.flex-items-start > details > div > ul > li:nth-child(3) > form > button"
                 ],
                 "properties": [],
                 "translate": "新しくファイルを作成"
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.file-navigation.mb-3.d-flex.flex-items-start > details > div > ul > li:nth-child(4) > a"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.file-navigation.mb-3.d-flex.flex-items-start > details > div > ul > li:nth-child(4) > a"
                 ],
                 "properties": [],
                 "translate": "既存のファイルをアップロード"
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.file-navigation.mb-3.d-flex.flex-items-start > span > get-repo > details > summary"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.file-navigation.mb-3.d-flex.flex-items-start > span > get-repo > details > summary"
                 ],
                 "properties": [],
                 "replace": "Code",
@@ -993,7 +1066,7 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.file-navigation.mb-3.d-flex.flex-items-start > span > get-repo > details > div > div > div:nth-child(1) > div > div"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.file-navigation.mb-3.d-flex.flex-items-start > span > get-repo > details > div > div > div:nth-child(1) > div > div"
                 ],
                 "properties": [],
                 "replace": "Clone",
@@ -1001,7 +1074,7 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.file-navigation.mb-3.d-flex.flex-items-start > span > get-repo > details > div > div > div:nth-child(1) > div > a"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.file-navigation.mb-3.d-flex.flex-items-start > span > get-repo > details > div > div > div:nth-child(1) > div > a"
                 ],
                 "properties": [
                     "aria-label"
@@ -1010,28 +1083,28 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.file-navigation.mb-3.d-flex.flex-items-start > span > get-repo > details > div > div > div:nth-child(1) > div > tab-container > div:nth-child(2) > p"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.file-navigation.mb-3.d-flex.flex-items-start > span > get-repo > details > div > div > div:nth-child(1) > div > tab-container > div:nth-child(2) > p"
                 ],
                 "properties": [],
                 "translate": ""
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.file-navigation.mb-3.d-flex.flex-items-start > span > get-repo > details > div > div > div:nth-child(1) > div > tab-container > div:nth-child(2) > p"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.file-navigation.mb-3.d-flex.flex-items-start > span > get-repo > details > div > div > div:nth-child(1) > div > tab-container > div:nth-child(2) > p"
                 ],
                 "properties": [],
                 "translate": "Gitを使用するか、URLを用いてSYNでチェックアウトできます。"
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.file-navigation.mb-3.d-flex.flex-items-start > span > get-repo > details > div > div > div:nth-child(1) > div > tab-container > div:nth-child(3) > p"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.file-navigation.mb-3.d-flex.flex-items-start > span > get-repo > details > div > div > div:nth-child(1) > div > tab-container > div:nth-child(3) > p"
                 ],
                 "properties": [],
                 "translate": "パスワードで保護されたSSH鍵を使用します。"
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.file-navigation.mb-3.d-flex.flex-items-start > span > get-repo > details > div > div > div:nth-child(1) > div > tab-container > div:nth-child(4) > p"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.file-navigation.mb-3.d-flex.flex-items-start > span > get-repo > details > div > div > div:nth-child(1) > div > tab-container > div:nth-child(4) > p"
                 ],
                 "properties": [],
                 "replace": "Work fast with our official CLI.",
@@ -1039,14 +1112,14 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.file-navigation.mb-3.d-flex.flex-items-start > span > get-repo > details > div > div > div:nth-child(1) > div > tab-container > div:nth-child(4) > p > a"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.file-navigation.mb-3.d-flex.flex-items-start > span > get-repo > details > div > div > div:nth-child(1) > div > tab-container > div:nth-child(4) > p > a"
                 ],
                 "properties": [],
                 "translate": "詳細"
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.file-navigation.mb-3.d-flex.flex-items-start > span > get-repo > details > div > div > div:nth-child(1) > ul > li.Box-row.Box-row--hover-gray.p-0.rounded-0.mt-0.js-remove-unless-platform > a"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.file-navigation.mb-3.d-flex.flex-items-start > span > get-repo > details > div > div > div:nth-child(1) > ul > li.Box-row.Box-row--hover-gray.p-0.rounded-0.mt-0.js-remove-unless-platform > a"
                 ],
                 "properties": [],
                 "replace":  "Open with GitHub Desktop",
@@ -1054,7 +1127,7 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.file-navigation.mb-3.d-flex.flex-items-start > span > get-repo > details > div > div > div:nth-child(1) > ul > li > a"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.file-navigation.mb-3.d-flex.flex-items-start > span > get-repo > details > div > div > div:nth-child(1) > ul > li > a"
                 ],
                 "properties": [],
                 "replace": "Open with Visual Studio",
@@ -1062,7 +1135,7 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.file-navigation.mb-3.d-flex.flex-items-start > span > get-repo > details > div > div > div:nth-child(1) > ul > li > a"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.file-navigation.mb-3.d-flex.flex-items-start > span > get-repo > details > div > div > div:nth-child(1) > ul > li > a"
                 ],
                 "properties": [],
                 "replace": "Download ZIP",
@@ -1070,14 +1143,14 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.Box.mb-3 > div.Box-header.Box-header--blue.position-relative > div > div.flex-1.d-flex.flex-items-center.ml-3.min-width-0 > div.d-flex.flex-auto.flex-justify-end.ml-3.flex-items-baseline > details > div > include-fragment > div.text-gray.no-wrap"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.Box.mb-3 > div.Box-header.Box-header--blue.position-relative > div > div.flex-1.d-flex.flex-items-center.ml-3.min-width-0 > div.d-flex.flex-auto.flex-justify-end.ml-3.flex-items-baseline > details > div > include-fragment > div.text-gray.no-wrap"
                 ],
                 "properties": [],
                 "translate": "チェックの状態を読み込んでいます..."
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.Box.mb-3 > div.Box-header.Box-header--blue.position-relative > div > div.flex-1.d-flex.flex-items-center.ml-3.min-width-0 > div.d-flex.flex-auto.flex-justify-end.ml-3.flex-items-baseline > details > div > div > div:nth-child(1) > h3"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.Box.mb-3 > div.Box-header.Box-header--blue.position-relative > div > div.flex-1.d-flex.flex-items-center.ml-3.min-width-0 > div.d-flex.flex-auto.flex-justify-end.ml-3.flex-items-baseline > details > div > div > div:nth-child(1) > h3"
                 ],
                 "properties": [],
                 "replace": "Some checks were not successful",
@@ -1085,7 +1158,7 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.Box.mb-3 > div.Box-header.Box-header--blue.position-relative > div > div.flex-1.d-flex.flex-items-center.ml-3.min-width-0 > div.d-flex.flex-auto.flex-justify-end.ml-3.flex-items-baseline > details > div > div > div:nth-child(1) > h3"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.Box.mb-3 > div.Box-header.Box-header--blue.position-relative > div > div.flex-1.d-flex.flex-items-center.ml-3.min-width-0 > div.d-flex.flex-auto.flex-justify-end.ml-3.flex-items-baseline > details > div > div > div:nth-child(1) > h3"
                 ],
                 "properties": [],
                 "replace": "All checks have passed",
@@ -1093,7 +1166,7 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.Box.mb-3 > div.Box-header.Box-header--blue.position-relative > div > div.flex-1.d-flex.flex-items-center.ml-3.min-width-0 > div.d-flex.flex-auto.flex-justify-end.ml-3.flex-items-baseline > details > div > div > div:nth-child(1) > span"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.Box.mb-3 > div.Box-header.Box-header--blue.position-relative > div > div.flex-1.d-flex.flex-items-center.ml-3.min-width-0 > div.d-flex.flex-auto.flex-justify-end.ml-3.flex-items-baseline > details > div > div > div:nth-child(1) > span"
                 ],
                 "properties": [],
                 "replace": " successful checks",
@@ -1101,7 +1174,7 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.Box.mb-3 > div.Box-header.Box-header--blue.position-relative > div > div.flex-1.d-flex.flex-items-center.ml-3.min-width-0 > div.d-flex.flex-auto.flex-justify-end.ml-3.flex-items-baseline > details > div > div > div:nth-child(1) > span"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.Box.mb-3 > div.Box-header.Box-header--blue.position-relative > div > div.flex-1.d-flex.flex-items-center.ml-3.min-width-0 > div.d-flex.flex-auto.flex-justify-end.ml-3.flex-items-baseline > details > div > div > div:nth-child(1) > span"
                 ],
                 "properties": [],
                 "replace": " successful check",
@@ -1109,7 +1182,7 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.Box.mb-3 > div.Box-header.Box-header--blue.position-relative > div > div.flex-1.d-flex.flex-items-center.ml-3.min-width-0 > div.d-flex.flex-auto.flex-justify-end.ml-3.flex-items-baseline > details > div > div > div:nth-child(1) > span"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.Box.mb-3 > div.Box-header.Box-header--blue.position-relative > div > div.flex-1.d-flex.flex-items-center.ml-3.min-width-0 > div.d-flex.flex-auto.flex-justify-end.ml-3.flex-items-baseline > details > div > div > div:nth-child(1) > span"
                 ],
                 "properties": [],
                 "replace": " successful checks",
@@ -1117,7 +1190,7 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.Box.mb-3 > div.Box-header.Box-header--blue.position-relative > div > div.flex-1.d-flex.flex-items-center.ml-3.min-width-0 > div.d-flex.flex-auto.flex-justify-end.ml-3.flex-items-baseline > details > div > div > div:nth-child(1) > span"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.Box.mb-3 > div.Box-header.Box-header--blue.position-relative > div > div.flex-1.d-flex.flex-items-center.ml-3.min-width-0 > div.d-flex.flex-auto.flex-justify-end.ml-3.flex-items-baseline > details > div > div > div:nth-child(1) > span"
                 ],
                 "properties": [],
                 "replace": " action required check",
@@ -1125,7 +1198,7 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.flash.mb-4"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.flash.mb-4"
                 ],
                 "properties": [],
                 "replace": "Help people interested in this repository understand your project by adding a README.",
@@ -1133,7 +1206,7 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.flash.mb-4"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.flash.mb-4"
                 ],
                 "properties": [],
                 "replace": "Add a README",
@@ -1141,28 +1214,28 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.Box.mb-3 > div.Box-header.Box-header--blue.position-relative > div > div.flex-1.d-flex.flex-items-center.ml-3.min-width-0 > div.d-flex.flex-auto.flex-justify-end.ml-3.flex-items-baseline > details > div > div > div.merge-status-list > div > div.d-flex.col-2.flex-shrink-0 > a"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.Box.mb-3 > div.Box-header.Box-header--blue.position-relative > div > div.flex-1.d-flex.flex-items-center.ml-3.min-width-0 > div.d-flex.flex-auto.flex-justify-end.ml-3.flex-items-baseline > details > div > div > div.merge-status-list > div > div.d-flex.col-2.flex-shrink-0 > a"
                 ],
                 "properties": [],
                 "translate": "詳細"
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.Box.mb-3 > div.Box-header.Box-header--blue.position-relative > div > div:nth-child(4) > ul > li > a > span > span"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.Box.mb-3 > div.Box-header.Box-header--blue.position-relative > div > div:nth-child(4) > ul > li > a > span > span"
                 ],
                 "properties": [],
                 "translate": "コミット"
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-3 > div > div.BorderGrid-row.hide-sm.hide-md > div > h2"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-3 > div > div.BorderGrid-row.hide-sm.hide-md > div > h2"
                 ],
                 "properties": [],
                 "translate": "概要"
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-3 > div > div.BorderGrid-row.hide-sm.hide-md > div > details > details-dialog > div.Box-header > h1"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-3 > div > div.BorderGrid-row.hide-sm.hide-md > div > details > details-dialog > div.Box-header > h1"
                 ],
                 "properties": [],
                 "translate": "リポジトリの概要を編集"
@@ -1218,7 +1291,7 @@ var json = [
             {
                 "selectors": [
                     "#repo_metadata_form > div.form-group.mt-3.mb-0 > label",
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-3 > div > div > div > h2 > a"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-3 > div > div > div > h2 > a"
                 ],
                 "properties": [],
                 "replace": "Environments",
@@ -1226,7 +1299,7 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-3 > div > div.BorderGrid-row.hide-sm.hide-md > div > div.f4.mt-3.text-gray.text-italic"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-3 > div > div.BorderGrid-row.hide-sm.hide-md > div > div.f4.mt-3.text-gray.text-italic"
                 ],
                 "properties": [],
                 "replace": "No description, website, or topics provided.",
@@ -1234,7 +1307,7 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-3 > div > div > div > ul > li > span"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-3 > div > div > div > ul > li > span"
                 ],
                 "properties": [],
                 "replace": "Active",
@@ -1242,7 +1315,7 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-3 > div > div > div > ul > li > span"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-3 > div > div > div > ul > li > span"
                 ],
                 "properties": [
                     "title"
@@ -1252,7 +1325,7 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-3 > div > div > div > h2 > a"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-3 > div > div > div > h2 > a"
                 ],
                 "properties": [],
                 "replace": "Contributors",
@@ -1260,7 +1333,7 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-3 > div > div.BorderGrid-row.hide-sm.hide-md > div > div > a"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-3 > div > div.BorderGrid-row.hide-sm.hide-md > div > div > a"
                 ],
                 "properties": [],
                 "replace": " License",
@@ -1268,7 +1341,7 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-3 > div > div > div > h2 > a"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-3 > div > div > div > h2 > a"
                 ],
                 "properties": [],
                 "replace": "Releases",
@@ -1276,7 +1349,7 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-3 > div > div > div > div.text-small.color-text-secondary"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-3 > div > div > div > div.text-small.color-text-secondary"
                 ],
                 "properties": [],
                 "replace": "No releases published",
@@ -1284,15 +1357,7 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-3 > div > div > div > a > div > div.d-flex > span.Label.Label--green.flex-shrink-0"
-                ],
-                "properties": [],
-                "replace": "Latest",
-                "translate": "最新"
-            },
-            {
-                "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-3 > div > div > div > div > a"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-3 > div > div > div > div > a"
                 ],
                 "properties": [],
                 "replace": "Create a new release",
@@ -1300,7 +1365,7 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-3 > div > div > div > div > a"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-3 > div > div > div > div > a"
                 ],
                 "properties": [],
                 "replace": "Publish your first release",
@@ -1309,7 +1374,7 @@ var json = [
             {
                 "selectors": [
                     "#repo_metadata_form > div.form-group.mt-3.mb-0 > label",
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-3 > div > div > div > h2 > a"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-3 > div > div > div > h2 > a"
                 ],
                 "properties": [],
                 "replace": "Packages",
@@ -1317,7 +1382,7 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-3 > div > div > div > div"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-3 > div > div > div > div"
                 ],
                 "properties": [],
                 "replace": "No packages published",
@@ -1325,7 +1390,7 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-3 > div > div > div > div > a"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-3 > div > div > div > div > a"
                 ],
                 "properties": [],
                 "replace": "Create a new package",
@@ -1333,7 +1398,7 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-3 > div > div > div > div > a"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-3 > div > div > div > div > a"
                 ],
                 "properties": [],
                 "replace": "Publish your first package",
@@ -1341,7 +1406,7 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-3 > div > div > div > h2"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-3 > div > div > div > h2"
                 ],
                 "properties": [],
                 "replace": "Languages",
@@ -1443,7 +1508,7 @@ var json = [
         "rules": [
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.js-pinned-issues-reorder-container > h2"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.js-pinned-issues-reorder-container > h2"
                 ],
                 "properties": [],
                 "replace": "Pinned issues",
@@ -1575,7 +1640,7 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.d-flex.flex-justify-between.mb-md-3.flex-column-reverse.flex-md-row.flex-items-end > div.d-flex.flex-justify-start.flex-auto.width-full.my-4.my-md-0 > div > nav > a"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.d-flex.flex-justify-between.mb-md-3.flex-column-reverse.flex-md-row.flex-items-end > div.d-flex.flex-justify-start.flex-auto.width-full.my-4.my-md-0 > div > nav > a"
                 ],
                 "properties": [],
                 "replace": "Labels",
@@ -1583,7 +1648,7 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.d-flex.flex-justify-between.mb-md-3.flex-column-reverse.flex-md-row.flex-items-end > div.d-flex.flex-justify-start.flex-auto.width-full.my-4.my-md-0 > div > nav > a"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.d-flex.flex-justify-between.mb-md-3.flex-column-reverse.flex-md-row.flex-items-end > div.d-flex.flex-justify-start.flex-auto.width-full.my-4.my-md-0 > div > nav > a"
                 ],
                 "properties": [],
                 "replace": "Milestones",
@@ -1591,7 +1656,7 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.d-flex.flex-justify-between.mb-md-3.flex-column-reverse.flex-md-row.flex-items-end > div.ml-3.d-flex.flex-justify-between.width-full.width-md-auto > a > span"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.d-flex.flex-justify-between.mb-md-3.flex-column-reverse.flex-md-row.flex-items-end > div.ml-3.d-flex.flex-justify-between.width-full.width-md-auto > a > span"
                 ],
                 "properties": [],
                 "replace": "New issue",
@@ -1599,7 +1664,15 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.issues-reset-query-wrapper > a"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.d-flex.flex-justify-between.mb-md-3.flex-column-reverse.flex-md-row.flex-items-end > div.ml-3.d-flex.flex-justify-between.width-full.width-md-auto > a > span"
+                ],
+                "properties": [],
+                "replace": "New pull request",
+                "translate": "新規作成"
+            },
+            {
+                "selectors": [
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.issues-reset-query-wrapper > a"
                 ],
                 "properties": [],
                 "replace": "Clear current search query, filters, and sorts",
@@ -1888,7 +1961,7 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.Box.mt-3.Box--responsive.hx_Box--firstRowRounded0 > div > div > h3"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.Box.mt-3.Box--responsive.hx_Box--firstRowRounded0 > div > div > h3"
                 ],
                 "properties": [],
                 "replace": "Welcome to pull requests!",
@@ -1896,7 +1969,7 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.Box.mt-3.Box--responsive.hx_Box--firstRowRounded0 > div > div > p"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.Box.mt-3.Box--responsive.hx_Box--firstRowRounded0 > div > div > p"
                 ],
                 "properties": [],
                 "replace": "Pull requests help you collaborate on code with other people. As pull requests are created, they’ll appear here in a searchable and filterable list. To get started, you should ",
@@ -1904,7 +1977,7 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.Box.mt-3.Box--responsive.hx_Box--firstRowRounded0 > div > div > p > a"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.Box.mt-3.Box--responsive.hx_Box--firstRowRounded0 > div > div > p > a"
                 ],
                 "properties": [],
                 "replace": "create a pull request",
@@ -1912,7 +1985,7 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.Box.mt-3.Box--responsive.hx_Box--firstRowRounded0 > div > div > h3"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.Box.mt-3.Box--responsive.hx_Box--firstRowRounded0 > div > div > h3"
                 ],
                 "properties": [],
                 "replace": "Welcome to issues!",
@@ -1920,7 +1993,7 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.Box.mt-3.Box--responsive.hx_Box--firstRowRounded0 > div > div > p"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.Box.mt-3.Box--responsive.hx_Box--firstRowRounded0 > div > div > p"
                 ],
                 "properties": [],
                 "replace": "Issues are used to track todos, bugs, feature requests, and more. As issues are created, they’ll appear here in a searchable and filterable list. To get started, you should ",
@@ -1928,7 +2001,74 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.Box.mt-3.Box--responsive.hx_Box--firstRowRounded0 > div > div > p > a"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.Box.mt-3.Box--responsive.hx_Box--firstRowRounded0 > div > div > h3"
+                ],
+                "properties": [],
+                "replace": "There aren’t any open issues.",
+                "translate": "開いているイシューはありません。"
+            },
+            {
+                "selectors": [
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.Box.mt-3.Box--responsive.hx_Box--firstRowRounded0 > div > div > h3"
+                ],
+                "properties": [],
+                "replace": "No results matched your search.",
+                "translate": "検索に一致する結果がありません。"
+            },
+            {
+                "selectors": [
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.Box.mt-3.Box--responsive.hx_Box--firstRowRounded0 > div > div > h3"
+                ],
+                "properties": [],
+                "replace": "There aren’t any open pull requests.",
+                "translate": "開いているプルリクエストはありません。"
+            },
+            {
+                "selectors": [
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.Box.mt-3.Box--responsive.hx_Box--firstRowRounded0 > div > div > p"
+
+                ],
+                "properties": [],
+                "replace": "You could search",
+                "translate": ""
+            },
+            {
+                "selectors": [
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.Box.mt-3.Box--responsive.hx_Box--firstRowRounded0 > div > div > p"
+                ],
+                "properties": [],
+                "replace": "all of GitHub",
+                "translate": "GitHub全体"
+            },
+            {
+                "selectors": [
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.Box.mt-3.Box--responsive.hx_Box--firstRowRounded0 > div > div > p"
+                ],
+                "properties": [],
+                "replace": " or try an ",
+                "translate": "または"
+            },
+            {
+                "selectors": [
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.Box.mt-3.Box--responsive.hx_Box--firstRowRounded0 > div > div > p"
+                ],
+                "properties": [],
+                "replace": ".",
+                "contains": ["advanced search"],
+                "translate": "",
+                "append": "で検索することができます。"
+            },
+            {
+                "selectors": [
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.Box.mt-3.Box--responsive.hx_Box--firstRowRounded0 > div > div > p"
+                ],
+                "properties": [],
+                "replace": "advanced search",
+                "translate": "高度な検索"
+            },
+            {
+                "selectors": [
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.Box.mt-3.Box--responsive.hx_Box--firstRowRounded0 > div > div > p > a"
                 ],
                 "properties": [],
                 "replace": "create an issue",
@@ -1936,7 +2076,7 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.Box.mt-3.Box--responsive.hx_Box--firstRowRounded0 > div > div > p"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.Box.mt-3.Box--responsive.hx_Box--firstRowRounded0 > div > div > p"
 
                 ],
                 "properties": [],
@@ -1945,7 +2085,7 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.protip > strong"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.protip > strong"
                 ],
                 "properties": [],
                 "replace": "ProTip",
@@ -1953,7 +2093,7 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.protip"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.protip"
                 ],
                 "properties": [],
                 "contains": [
@@ -1964,7 +2104,15 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.protip"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.protip"
+                ],
+                "properties": [],
+                "replace": "Adding ",
+                "translate": ""
+            },
+            {
+                "selectors": [
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.protip"
                 ],
                 "properties": [],
                 "contains": [
@@ -1975,7 +2123,7 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.protip"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.protip"
                 ],
                 "properties": [],
                 "contains": [
@@ -1986,7 +2134,7 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.protip"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.protip"
                 ],
                 "properties": [],
                 "replace": "Mix and match filters to narrow down what you’re looking for.",
@@ -1994,7 +2142,7 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.protip"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.protip"
                 ],
                 "properties": [],
                 "replace": " Updated in the last three days",
@@ -2002,7 +2150,7 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.protip"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.protip"
 
                 ],
                 "properties": [],
@@ -2014,7 +2162,7 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.protip"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.protip"
                 ],
                 "properties": [],
                 "replace": " will show everything without a label.",
@@ -2022,7 +2170,7 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.protip"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.protip"
 
                 ],
                 "properties": [],
@@ -2034,7 +2182,7 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.protip"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.protip"
                 ],
                 "properties": [],
                 "replace": " to see everything that’s not assigned.",
@@ -2042,7 +2190,7 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.protip"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.protip"
                 ],
                 "properties": [],
                 "contains": [
@@ -2053,11 +2201,635 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.protip"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.protip"
                 ],
                 "properties": [],
                 "replace": "Notify someone on an issue with a mention, like: ",
                 "translate": "次のようなメンションでイシューについて誰かに通知します："
+            },
+            {
+                "selectors": [
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.protip"
+                ],
+                "properties": [],
+                "contains": [
+                    "Find all open issues with in progress development work with"
+                ],
+                "replace": "Find all open issues with in progress development work with",
+                "translate": "",
+                "append": "で、進行中の開発作業で未解決のイシューを見つける"
+            },
+            {
+                "selectors": [
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.protip"
+                ],
+                "properties": [],
+                "replace": " will show everything without a milestone.",
+                "translate": "で、マイルストーンのないイシューを表示します。"
+            },
+        ]
+    },
+    {
+        "name": "Repository actions create new",
+        "path": "^\/[a-zA-Z0-9](?:[a-zA-Z0-9]|-(?=[a-zA-Z0-9])){0,38}\/[a-zA-Z0-9](?:[a-zA-Z0-9]|-(?=[a-zA-Z0-9])){0,100}\/actions\/new(\/)?$",
+        "rules": [
+            {
+                "selectors": [
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.d-flex.flex-column.width-full > div > div > div > div > div > div > h1"
+                ],
+                "properties": [],
+                "replace": "Get started with GitHub Actions",
+                "translate": "Github Actionsを始めましょう"
+            },
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.d-flex.flex-column.width-full > div > div > div > div > div > div > p:nth-child(2)"
+                ],
+                "properties": [],
+                "replace": "Build, test, and deploy your code. Make code reviews, branch management, and issue triaging work the way you want. Select a workflow template to get started.",
+                "translate": "コードのビルド、テスト、デプロイをします。コードレビュー、ブランチ管理、問題のトリアージを希望通りに機能させます。作成するワークフローのテンプレートを選びましょう。"
+            },
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.d-flex.flex-column.width-full > div > div > div > div > div > div > p:nth-child(3)"
+                ],
+                "properties": [],
+                "replace": "Skip this and",
+                "translate": "スキップして "
+            },
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.d-flex.flex-column.width-full > div > div > div > div > div > div > p:nth-child(3)"
+                ],
+                "properties": [],
+                "replace": " set up a workflow yourself",
+                "translate": "自分でワークフローをセットアップ"
+            },
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.d-flex.flex-column.width-full > div > div > div > div.d-flex.flex-column.flex-md-row.flex-justify-between > h2"
+                ],
+                "properties": [],
+                "replace": " repository",
+                "contains": ["Workflows made for your "],
+                "translate": "リポジトリ用に構築されたワークフロー",
+            },
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.d-flex.flex-column.width-full > div > div > div > div.d-flex.flex-column.flex-md-row.flex-justify-between > h2"
+                ],
+                "properties": [],
+                "replace": "Workflows made for your ",
+                "translate": "",
+            },
+            {
+                "selectors": [
+                    "div.Box div.pr-4 p:nth-child(2)"
+                ],
+                "properties": [],
+                "replace": "By\n",
+                "translate": "作成 "
+            },
+            {
+                "selectors": [
+                    "div.Box div.pr-4 a.btn"
+                ],
+                "properties": [],
+                "replace": "Set up this workflow",
+                "translate": "このワークフローをセットアップ"
+            },
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.d-flex.flex-column.width-full > div > div > div > h2"
+                ],
+                "properties": [],
+                "replace": "Deploy your code with these popular services",
+                "translate": "これらの人気のあるサービスを使用してあなたのコードをデプロイ"
+            },
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.d-flex.flex-column.width-full > div > div > div > h2"
+                ],
+                "properties": [],
+                "replace": "Continuous integration workflows",
+                "translate": "継続的インテグレーションワークフロー"
+            },
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.d-flex.flex-column.width-full > div > div > div > h2"
+                ],
+                "properties": [],
+                "replace": "Automate every step in your process",
+                "translate": "プロセスのすべてを自動化"
+            },
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.d-flex.flex-column.width-full > div > div > div > details > summary"
+                ],
+                "properties": [],
+                "replace": "More continuous integration workflows...",
+                "translate": "もっと表示"
+            },
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.d-flex.flex-column.width-full > div > div > div > div.mt-4.py-6.mb-n5.border-top > h2"
+                ],
+                "properties": [],
+                "replace": "Learn more about GitHub Actions",
+                "translate": "GitHub Actionsについてもっと学ぶ"
+            },
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.d-flex.flex-column.width-full > div > div > div > div.mt-4.py-6.mb-n5.border-top > div > a > h3"
+                ],
+                "properties": [],
+                "replace": "Getting started and core concepts",
+                "translate": "始め方とコンセプト"
+            },
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.d-flex.flex-column.width-full > div > div > div > div.mt-4.py-6.mb-n5.border-top > div > a > p"
+                ],
+                "properties": [],
+                "replace": "New to Actions? Start here. Learn the core concepts and how to get started.",
+                "translate": "Actionsは初めてですか?ここをクリックしてスタートしましょう。コンセプトと開始方法を学びます。"
+            },
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.d-flex.flex-column.width-full > div > div > div > div.mt-4.py-6.mb-n5.border-top > div > a > h3"
+                ],
+                "properties": [],
+                "replace": "Configuring and managing workflows",
+                "translate": "設定とワークフローの管理"
+            },
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.d-flex.flex-column.width-full > div > div > div > div.mt-4.py-6.mb-n5.border-top > div > a > p"
+
+                ],
+                "properties": [],
+                "replace": "Create custom workflows to control your project's life cycle processes.",
+                "translate": "プロジェクトのライフサイクルプロセスをコントロールするワークフローを作成します。"
+            },
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.d-flex.flex-column.width-full > div > div > div > div.mt-4.py-6.mb-n5.border-top > div > a > h3"
+                ],
+                "properties": [],
+                "replace": "Language and framework guides",
+                "translate": "言語とフレームワークのガイド"
+            },
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.d-flex.flex-column.width-full > div > div > div > div.mt-4.py-6.mb-n5.border-top > div > a > p"
+                ],
+                "properties": [],
+                "replace": "Guides for projects written in many programming languages.",
+                "translate": "多くのプログラミング言語で書かれたプロジェクトのガイド"
+            },
+            {
+                "selectors": [
+                    "span.text-gray-light.text-small.overflow-hidden.width-full.text-right"
+                ],
+                "properties": [],
+                "replace": "Deployment",
+                "translate": "デプロイ"
+            },
+            {
+                "selectors": [
+                    "a.text-gray-light.text-small.overflow-hidden.width-full.text-right"
+                ],
+                "properties": [],
+                "replace": "Automation",
+                "translate": "自動化"
+            },
+            {
+                "selectors": [
+
+                ],
+                "properties": [],
+                "replace": "",
+                "translate": ""
+            },
+            {
+                "selectors": [
+
+                ],
+                "properties": [],
+                "replace": "",
+                "translate": ""
+            },
+        ]
+    },
+    {
+        "name": "Repository actions",
+        "path": "^\/[a-zA-Z0-9](?:[a-zA-Z0-9]|-(?=[a-zA-Z0-9])){0,38}\/[a-zA-Z0-9](?:[a-zA-Z0-9]|-(?=[a-zA-Z0-9])){0,100}\/actions(\/.*)*$",
+        "rules": [
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div > div > div > h3"
+                ],
+                "properties": [],
+                "replace": "Workflows",
+                "translate": "ワークフロー"
+            },
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div > div > div > a.d-none.d-lg-block.btn",
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div > div > div > a.d-none.d-md-block.d-lg-none.btn.btn-outline",
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div > div > div > a.d-block.d-md-none.btn.btn-outline"
+                ],
+                "properties": [],
+                "replace": "New workflow",
+                "translate": "新規作成"
+            },
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div > div.flex-auto.col-12.col-lg-8 > div > div > h1",
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div > div.hx_actions-sidebar.col-12.col-lg-3.pr-lg-4.pr-xl-5 > ul > li:nth-child(1) > a"
+
+                ],
+                "properties": [],
+                "replace": "All workflows",
+                "translate": "すべてのワークフロー"
+            },
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div > div.flex-auto.col-12.col-lg-8 > div.flash.flash-warn.mt-2.mb-4"
+                ],
+                "properties": [],
+                "replace": "This workflow was disabled manually.",
+                "translate": "このワークフローは操作によって無効化されています。"
+            },
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div > div.flex-auto.col-12.col-lg-8 > div.flash.flash-warn.mt-2.mb-4 > form > button"
+                ],
+                "properties": [],
+                "replace": "Enable workflow",
+                "translate": "ワークフローを有効化"
+            },
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div > div > div > div > form > input"
+                ],
+                "properties": [
+                    "placeholder"
+                ],
+                "replace": "Filter workflows",
+                "translate": "ワークフローをフィルタする"
+            },
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div > div.flex-auto.col-12.col-lg-8 > div.d-flex.flex-row.flex-lg-row > div > form > div > div.px-2 > div.width-full.text-normal.bg-white.text-gray-light.py-2"
+                ],
+                "properties": [],
+                "replace": "Narrow your search",
+                "translate": "絞り込み検索"
+            },
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div > div.flex-auto.col-12.col-lg-8 > div.d-flex.flex-row.flex-lg-row > details > details-menu > details > summary",
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.js-updatable-content.js-socket-channel.d-flex.flex-items-start.flex-md-items-center.pb-3.pb-md-4.pl-0.pl-md-2.mt-n2.mb-1.ml-1 > div.d-none.d-md-flex.flex-self-start.ml-n1.ml-md-0 > div.d-flex.flex-justify-end > details > ul > li.mt-1 > details > summary"
+                ],
+                "properties": [],
+                "replace": "Create status badge",
+                "translate": "ステータスバッジを作成"
+            },
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div > div.flex-auto.col-12.col-lg-8 > div.d-flex.flex-row.flex-lg-row > details > details-menu > form > button"
+                ],
+                "properties": [],
+                "replace": "Disable workflow",
+                "translate": "ワークフローを無効化"
+            },
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div > div.flex-auto.col-12.col-lg-8 > div.Box.Box--responsive.mt-3 > div.Box-header.d-flex.flex-justify-between > div > div > strong"
+                ],
+                "properties": [],
+                "contains": [" workflow runs"],
+                "replace": " workflow runs",
+                "translate": "",
+                "append": "つの実行されたワークフロー"
+            },
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div > div.flex-auto.col-12.col-lg-8 > div.Box.Box--responsive.mt-3 > div.Box-header.d-flex.flex-justify-between > div > div > strong"
+                ],
+                "properties": [],
+                "contains": [" workflow run results"],
+                "replace": " workflow run results",
+                "translate": "",
+                "append": "つのワークフローの実行結果"
+            },
+            {
+                "selectors": [
+                    "#event-menu > summary"
+                ],
+                "properties": [],
+                "replace": "Event",
+                "translate": "イベント"
+            },
+            {
+                "selectors": [
+                    "#event-menu > details-menu > div > header > h3"
+                ],
+                "properties": [],
+                "replace": "Filter by event",
+                "translate": "フィルタでイベントする"
+            },
+            {
+                "selectors": [
+                    "#event-filter"
+                ],
+                "properties": [
+                    "placeholder"
+                ],
+                "replace": "Find an event",
+                "translate": "イベントを探す"
+            },
+            {
+                "selectors": [
+                    "#status-menu > summary"
+                ],
+                "properties": [],
+                "replace": "Status",
+                "translate": "ステータス"
+            },
+            {
+                "selectors": [
+                    "#status-menu > details-menu > div > header > h3"
+                ],
+                "properties": [],
+                "replace": "Filter by status",
+                "translate": "ステータスでフィルタする"
+            },
+            {
+                "selectors": [
+                    "Find a status"
+                ],
+                "properties": [
+                    "placeholder"
+                ],
+                "replace": "Find a status",
+                "translate": "ステータスを探す"
+            },
+            {
+                "selectors": [
+                    "#status-menu > details-menu > div > div.SelectMenu-list > a"
+                ],
+                "properties": [],
+                "replace": "queued",
+                "translate": "キュー済み"
+            },
+            {
+                "selectors": [
+                    "#status-menu > details-menu > div > div.SelectMenu-list > a"
+                ],
+                "properties": [],
+                "replace": "in progress",
+                "translate": "実行中"
+            },
+            {
+                "selectors": [
+                    "#status-menu > details-menu > div > div.SelectMenu-list > a"
+                ],
+                "properties": [],
+                "replace": "waiting",
+                "translate": "処理待ち"
+            },
+            {
+                "selectors": [
+                    "#status-menu > details-menu > div > div.SelectMenu-list > a"
+                ],
+                "properties": [],
+                "replace": "completed",
+                "translate": "完了"
+            },
+            {
+                "selectors": [
+                    "#status-menu > details-menu > div > div.SelectMenu-list > a"
+                ],
+                "properties": [],
+                "replace": "neutral",
+                "translate": "ニュートラル"
+            },
+            {
+                "selectors": [
+                    "#status-menu > details-menu > div > div.SelectMenu-list > a"
+                ],
+                "properties": [],
+                "replace": "success",
+                "translate": "成功"
+            },
+            {
+                "selectors": [
+                    "#status-menu > details-menu > div > div.SelectMenu-list > a"
+                ],
+                "properties": [],
+                "replace": "failure",
+                "translate": "失敗"
+            },
+            {
+                "selectors": [
+                    "#status-menu > details-menu > div > div.SelectMenu-list > a"
+                ],
+                "properties": [],
+                "replace": "cancelled",
+                "translate": "キャンセル済み"
+            },
+            {
+                "selectors": [
+                    "#status-menu > details-menu > div > div.SelectMenu-list > a"
+                ],
+                "properties": [],
+                "replace": "action required",
+                "translate": "アクションが必要"
+            },
+            {
+                "selectors": [
+                    "#status-menu > details-menu > div > div.SelectMenu-list > a"
+                ],
+                "properties": [],
+                "replace": "timed out",
+                "translate": "タイムアウト"
+            },
+            {
+                "selectors": [
+                    "#status-menu > details-menu > div > div.SelectMenu-list > a"
+                ],
+                "properties": [],
+                "replace": "skipped",
+                "translate": "スキップ済み"
+            },
+            {
+                "selectors": [
+                    "#status-menu > details-menu > div > div.SelectMenu-list > a"
+                ],
+                "properties": [],
+                "replace": "stal",
+                "translate": "活動なし"
+            },
+            {
+                "selectors": [
+                    "#branch-menu > summary"
+                ],
+                "properties": [],
+                "replace": "Branch",
+                "translate": "ブランチ"
+            },
+            {
+                "selectors": [
+                    "#branch-menu > details-menu > div > header > h3"
+                ],
+                "properties": [
+                    "placeholder"
+                ],
+                "replace": "Find by branch",
+                "translate": "ブランチを探す"
+            },
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div > div.flex-auto.col-12.col-lg-8 > div.Box.Box--responsive.mt-3 > div.Box-header.d-flex.flex-justify-between > div.table-list-header-toggle.states.d-flex.flex-lg-justify-end > details > summary"
+                ],
+                "properties": [],
+                "replace": "Actor",
+                "translate": "実行者"
+            },
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div > div.flex-auto.col-12.col-lg-8 > div.Box.Box--responsive.mt-3 > div.Box-header.d-flex.flex-justify-between > div.table-list-header-toggle.states.d-flex.flex-lg-justify-end > details.details-reset.details-overlay.d-inline-block.position-relative.pr-3.pr-sm-0.px-3 > details-menu > div > header > h3"
+                ],
+                "properties": [],
+                "replace": "Filter by actor",
+                "translate": "実行者でフィルタする"
+            },
+            {
+                "selectors": [
+                    "#actor-filter"
+                ],
+                "properties": [
+                    "placeholder"
+                ],
+                "replace": "Find a user",
+                "translate": "ユーザを探す"
+            },
+            {
+                "selectors": [
+                    "div > div.d-table-cell.v-align-middle.col-1.col-md-3.text-small > div > div.text-right > details > ul > li > a",
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.js-updatable-content.js-socket-channel.d-flex.flex-items-start.flex-md-items-center.pb-3.pb-md-4.pl-0.pl-md-2.mt-n2.mb-1.ml-1 > div.d-none.d-md-flex.flex-self-start.ml-n1.ml-md-0 > div.d-flex.flex-justify-end > details > ul > li > a"
+                ],
+                "properties": [],
+                "replace": "View workflow file",
+                "translate": "ワークフローの構成を見る"
+            },
+            {
+                "selectors": [
+                    "div > div.d-table-cell.v-align-middle.col-1.col-md-3.text-small > div > div.text-right > details > ul > li > details > summary",
+                    "div > div.d-table-cell.v-align-middle.col-1.col-md-3.text-small > div > div.text-right > details > ul > li > details > details-dialog > div.Box-header > h3"
+
+                ],
+                "properties": [],
+                "replace": "Delete workflow run",
+                "translate": "この実行を削除する"
+            },
+            {
+                "selectors": [
+                    "div > div.d-table-cell.v-align-middle.col-1.col-md-3.text-small > div > div.text-right > details > ul > li:nth-child(2) > details > details-dialog > div.Box-body.pt-0.overflow-y-auto > div > p"
+                ],
+                "properties": [],
+                "replace": "Are you sure you want to delete this workflow run?",
+                "translate": "本当にこの実行を削除しますか？"
+            },
+            {
+                "selectors": [
+                    "div > div.d-table-cell.v-align-middle.col-1.col-md-3.text-small > div > div.text-right > details > ul > li:nth-child(2) > details > details-dialog > div.Box-body.pt-0.overflow-y-auto > div > p > strong"
+                ],
+                "properties": [],
+                "replace": "This action cannot be undone",
+                "translate": "この操作は元には戻せません"
+            },
+            {
+                "selectors": [
+                    "div > div.d-table-cell.v-align-middle.col-1.col-md-3.text-small > div > div.text-right > details > ul > li:nth-child(2) > details > details-dialog > div.Box-body.pt-0.overflow-y-auto > div > p"
+                ],
+                "properties": [],
+                "replace": ".",
+                "translate": "。"
+            },
+            {
+                "selectors": [
+                    "div > div.d-table-cell.v-align-middle.col-1.col-md-3.text-small > div > div.text-right > details > ul > li:nth-child(2) > details > details-dialog > div.Box-body.pt-0.overflow-y-auto > div > form > button"
+                ],
+                "properties": [],
+                "replace": "Yes, permanently delete this workflow run",
+                "translate": "はい、この実行を<strong>永久的に</strong>削除します。"
+            },
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.d-flex.flex-column.flex-md-row > nav > div > div > ul > li:nth-child(1) > a"
+                ],
+                "properties": [],
+                "replace": "Summary",
+                "translate": "概要"
+            },
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.d-flex.flex-column.flex-md-row > div > div > div.js-updatable-content.js-socket-channel.actions-workflow-stats.actions-fullwidth-module.color-bg-canvas.Box.box-shadow.mb-3.pb-3.px-3.border.border-top-0.border-md-top.rounded-1 > div > div > span.mb-1.d-block.text-small.text-gray"
+                ],
+                "properties": [],
+                "replace": "Status",
+                "translate": "状態"
+            },
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.d-flex.flex-column.flex-md-row > div > div > div.js-updatable-content.js-socket-channel.actions-workflow-stats.actions-fullwidth-module.color-bg-canvas.Box.box-shadow.mb-3.pb-3.px-3.border.border-top-0.border-md-top.rounded-1 > div > div > span.mb-1.d-block.text-small.text-gray"
+                ],
+                "properties": [],
+                "replace": "Total duration",
+                "translate": "合計実行時間"
+            },
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.d-flex.flex-column.flex-md-row > div > div > div.js-updatable-content.js-socket-channel.actions-workflow-stats.actions-fullwidth-module.color-bg-canvas.Box.box-shadow.mb-3.pb-3.px-3.border.border-top-0.border-md-top.rounded-1 > div > div > span.mb-1.d-block.text-small.text-gray"
+                ],
+                "properties": [],
+                "replace": "Billable time",
+                "translate": "請求可能時間"
+            },
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.d-flex.flex-column.flex-md-row > div > div > div.js-updatable-content.js-socket-channel.actions-workflow-stats.actions-fullwidth-module.color-bg-canvas.Box.box-shadow.mb-3.pb-3.px-3.border.border-top-0.border-md-top.rounded-1 > div > div > span.mb-1.d-block.text-small.text-gray"
+                ],
+                "properties": [],
+                "replace": "Artifacts",
+                "translate": "成果物"
+            },
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.js-updatable-content.js-socket-channel.d-flex.flex-items-start.flex-md-items-center.pb-3.pb-md-4.pl-0.pl-md-2.mt-n2.mb-1.ml-1 > div.d-none.d-md-flex.flex-self-start.ml-n1.ml-md-0 > div.mr-2.pt-1 > details > summary"
+                ],
+                "properties": [],
+                "replace": "Re-run jobs",
+                "translate": "Jobを再実行"
+            },
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.js-updatable-content.js-socket-channel.d-flex.flex-items-start.flex-md-items-center.pb-3.pb-md-4.pl-0.pl-md-2.mt-n2.mb-1.ml-1 > div.d-none.d-md-flex.flex-self-start.ml-n1.ml-md-0 > div.mr-2.pt-1 > details > ul > li > form > button"
+                ],
+                "properties": [],
+                "replace": "Re-run all jobs",
+                "translate": "全てのJobを再実行"
+            },
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.js-updatable-content.js-socket-channel.d-flex.flex-items-start.flex-md-items-center.pb-3.pb-md-4.pl-0.pl-md-2.mt-n2.mb-1.ml-1 > div.d-none.d-md-flex.flex-self-start.ml-n1.ml-md-0 > div.d-flex.flex-justify-end > details > ul > li > form > button"
+                ],
+                "properties": [],
+                "replace": "Delete all logs",
+                "translate": "すべてのログを削除"
             },
         ]
     },
@@ -2151,7 +2923,7 @@ var json = [
             },
             {
                 "selectors": [
-                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.Box.mb-3 > div.Box-header.Box-header--blue.position-relative > div > div.flex-1.d-flex.flex-items-center.ml-3.min-width-0 > div.css-truncate.css-truncate-overflow.text-gray > a"
+                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.gutter-condensed.gutter-lg.flex-column.flex-md-row.d-flex > div.flex-shrink-0.col-12.col-md-9.mb-4.mb-md-0 > div.Box.mb-3 > div.Box-header.Box-header--blue.position-relative > div > div.flex-1.d-flex.flex-items-center.ml-3.min-width-0 > div.css-truncate.css-truncate-overflow.text-gray > a"
                 ],
                 "properties": [
                     "title"
@@ -2180,37 +2952,46 @@ var json = [
 
 var enable = true;
 
-main(null);
-
 function main(domr) {
     if (!enable)
         return;
     json.forEach((rules) => {
         if (!window.location.pathname.match(new RegExp(rules.path)))
             return;
+
         rules.rules.forEach((obj) => {
-            var doms = obj.selectors.map(s => document.querySelectorAll(s));
             var props = obj.properties;
             var translate = obj.translate;
             var format = obj.format;
             var contains = obj.contains;
             var append = obj.append;
-            doms.forEach((domc) => {
+            var ignoreCase = obj.ignoreCase ? true: false;
+            var override = obj.override;
+
+            var doms;
+            if (!override && rules.selector != undefined && rules.selector != null)
+                doms = [document.querySelectorAll(rules.selector)]
+            else
+                doms = obj.selectors.map(s => document.querySelectorAll(s));
+
+            for (var i = 0; i < doms.length; i++)
+            {
+                var domc = doms[i]
                 domc.forEach((dom) => {
                     if (domr != undefined && domr != null && dom != null && !dom == domr)
                         return;
                     props.forEach((prop) => {
-                        tr(dom, translate, prop, obj["replace"], format, contains, append);
+                        tr(dom, translate, prop, obj["replace"], format, contains, append, ignoreCase);
                     });
                     if (props.length == 0 && format != undefined)
-                        tr(dom, translate, null, obj["replace"], format, contains, append)
+                        tr(dom, translate, null, obj["replace"], format, contains, append, ignoreCase)
                     else if (props.length == 0 && obj["replace"] == undefined)
-                         tr(dom, translate, null, null, format, contains, append)
+                         tr(dom, translate, null, null, format, contains, append, ignoreCase)
                     else if (obj["replace"] != undefined)
-                        tr(dom, translate, null, obj["replace"], format, contains, append);
+                        tr(dom, translate, null, obj["replace"], format, contains, append, ignoreCase);
                 });
 
-            });
+            }
         });
 
     });
@@ -2225,7 +3006,7 @@ var config = {
 };
 
 var observer = new MutationObserver((r) => {
-    var flag = false;
+    /*var flag = false;
     r.forEach((b) => {
         if (b.target)
             if (b.target.className)
@@ -2241,9 +3022,8 @@ var observer = new MutationObserver((r) => {
                 flag = true;
     });
     if (flag)
-        return;
+        return;*/
     observer.disconnect();
-    console.log(r)
     main(null);
     observer.observe(document, config);
 });
@@ -2253,46 +3033,53 @@ document.kill = () => {
     enable = false;
 }
 
-function cca (str, array) {
+function cca (str, array, ignoreCase) {
     var a = false;
     array.forEach((ab) => {
         if (a)
             return;
-        a = str.includes(ab);
+        if (ignoreCase)
+            a = str.toLowerCase().includes(ab.toLowerCase());
+        else a = str.includes(ab);
     });
     return a;
 }
 
-function tr(dom, translate, prop, replace, format, contains, append) {
+function lower(str, ignoreCase)
+{
+    return ignoreCase ? str.ignoreCase(): str;
+}
+
+function tr(dom, translate, prop, replace, format, contains, append, ignoreCase) {
     if (dom == undefined || dom == null)
         return;
     if (translate != undefined)
     {
         if (prop != null)
         {
-            if (contains != undefined && contains != null && dom[prop] != null && dom[prop] != undefined && !cca(dom[prop], contains))
+            if (contains != undefined && contains != null && dom[prop] != null && dom[prop] != undefined && !cca(dom[prop], contains, ignoreCase))
                 return;
             if (replace != null && dom[prop] != undefined)
             {
-                var a = dom[prop].replace(replace, translate) + (append != undefined && append != null ? append: "");
-                if (a != dom[prop])
+                var a = lower(dom[prop], ignoreCase).replace(lower(replace, ignoreCase), translate) + (append != undefined && append != null ? append: "");
+                if (a != dom[prop].toLowerCase())
                     dom[prop] = a;
             }
             else
             {
                 var ate = translate + (append != undefined && append != null ? append: "");
-                if (ate != dom[prop])
+                if (ate != lower(dom[prop], ignoreCase))
                     dom[prop] = ate;
             }
         }
         else
         {
-            if (contains != undefined && contains != null && !cca(dom.innerHTML, contains))
+            if (contains != undefined && contains != null && !cca(dom.innerHTML, contains, ignoreCase))
                 return;
             if (replace != null)
             {
-                var kawr = dom.innerHTML.replace(replace, translate) + (append != undefined && append != null ? append: "");
-                if (dom.innerHTML != kawr)
+                var kawr = lower(dom.innerHTML, ignoreCase).replace(lower(replace, ignoreCase), translate) + (append != undefined && append != null ? append: "");
+                if (lower(dom.innerHTML, ignoreCase) != kawr)
                     dom.innerHTML = kawr
             }
             else
@@ -2315,7 +3102,7 @@ function tr(dom, translate, prop, replace, format, contains, append) {
     if (prop != null)
     {
         if (document.querySelector(replace) != null)
-            if (contains != undefined && contains != null && dom[prop] != null && dom[prop] != undefined && cca(dom[prop], contains))
+            if (contains != undefined && contains != null && dom[prop] != null && dom[prop] != undefined && cca(dom[prop], contains, ignoreCase))
             {
                 var propaw = format.format(document.querySelector(replace).outerHTML) + (append != undefined && append != null ? append: "");
                 if (dom[prop] != propaw)
@@ -2324,7 +3111,7 @@ function tr(dom, translate, prop, replace, format, contains, append) {
     }
     else
         if (document.querySelector(replace) != null)
-              if (contains != undefined && contains != null && cca(dom.innerHTML, contains))
+              if (contains != undefined && contains != null && cca(dom.innerHTML, contains, ignoreCase))
               {
                   var inn =  format.format(document.querySelector(replace).outerHTML) + (append != undefined && append != null ? append: "");
                   if (inn != dom.innerHTML)
