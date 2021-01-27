@@ -252,8 +252,12 @@ var json = [
 					"body > div.position-relative.js-header-wrapper > header > div.Header-item.position-relative.mr-0.d-none.d-md-flex > details > details-menu > div.header-nav-current-user.css-truncate > a"
 				],
 				"properties": [],
-				"replace": "body > div.position-relative.js-header-wrapper > header > div.Header-item.position-relative.mr-0.d-none.d-md-flex > details > details-menu > div.header-nav-current-user.css-truncate > a > strong",
-				"format": "{0}としてログイン中"
+                "contains": [
+                    "Signed in as"
+                ],
+                "replace": "Signed in as",
+                "translate": "",
+                "append": "としてログイン中"
 			},
 			{
 				"selectors": [
@@ -466,7 +470,48 @@ var json = [
 				"properties": [],
 				"replace": "seconds ago",
 				"translate": "秒前"
-			}
+			},
+            {
+                "selectors": [
+                    ".gh-ja-time"
+                ],
+                "properties": [],
+                "replace": "m",
+                "translate": "分"
+            },
+
+            {
+                "selectors": [
+                    ".gh-ja-time"
+                ],
+                "properties": [],
+                "replace": "s",
+                "translate": "秒"
+            },
+            {
+                "selectors": [
+                    ".gh-ja-time"
+                ],
+                "properties": [],
+                "replace": "h",
+                "translate": "時間"
+            },
+            {
+                "selectors": [
+                    ".gh-ja-time"
+                ],
+                "properties": [],
+                "replace": "d",
+                "translate": "日"
+            },
+            {
+                "selectors": [
+                    ".gh-ja-time"
+                ],
+                "properties": [],
+                "replace": "年",
+                "translate": "y"
+            },
 		]
 	},
     {
@@ -1503,7 +1548,7 @@ var json = [
         ]
     },
     {
-        "name": "Repository issue page nad pull requests.",
+        "name": "Repository issue page and pull requests.",
         "path": "^\/[a-zA-Z0-9](?:[a-zA-Z0-9]|-(?=[a-zA-Z0-9])){0,38}\/[a-zA-Z0-9](?:[a-zA-Z0-9]|-(?=[a-zA-Z0-9])){0,100}\/(issues|pulls)(\/)?$",
         "rules": [
             {
@@ -2091,142 +2136,6 @@ var json = [
                 "replace": "ProTip",
                 "translate": "ヒント"
             },
-            {
-                "selectors": [
-                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.protip"
-                ],
-                "properties": [],
-                "contains": [
-                    "Type "
-                ],
-                "replace": "Type ",
-                "translate": "問題やプルリクエスト上で"
-            },
-            {
-                "selectors": [
-                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.protip"
-                ],
-                "properties": [],
-                "replace": "Adding ",
-                "translate": ""
-            },
-            {
-                "selectors": [
-                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.protip"
-                ],
-                "properties": [],
-                "contains": [
-                    " on any issue or pull request to go back to the pull request listing page."
-                ],
-                "replace": " on any issue or pull request to go back to the pull request listing page.",
-                "translate": "を入力することで一覧に戻ることができます。"
-            },
-            {
-                "selectors": [
-                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.protip"
-                ],
-                "properties": [],
-                "contains": [
-                    " on any issue or pull request to go back to the issue listing page."
-                ],
-                "replace": " on any issue or pull request to go back to the issue listing page.",
-                "translate": "を入力することで一覧に戻ることができます。"
-            },
-            {
-                "selectors": [
-                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.protip"
-                ],
-                "properties": [],
-                "replace": "Mix and match filters to narrow down what you’re looking for.",
-                "translate": "フィルタを組み合わせてあなたが探しているものを絞り込みます。"
-            },
-            {
-                "selectors": [
-                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.protip"
-                ],
-                "properties": [],
-                "replace": " Updated in the last three days",
-                "translate": "過去三日前に更新"
-            },
-            {
-                "selectors": [
-                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.protip"
-
-                ],
-                "properties": [],
-                "contains": [
-                    "Adding "
-                ],
-                "replace": "Addiing",
-                "translate": ""
-            },
-            {
-                "selectors": [
-                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.protip"
-                ],
-                "properties": [],
-                "replace": " will show everything without a label.",
-                "translate": "使用すると、ラベルのない全てのものが表示されます。"
-            },
-            {
-                "selectors": [
-                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.protip"
-
-                ],
-                "properties": [],
-                "contains": [
-                    "Add "
-                ],
-                "replace": "Add",
-                "translate": ""
-            },
-            {
-                "selectors": [
-                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.protip"
-                ],
-                "properties": [],
-                "replace": " to see everything that’s not assigned.",
-                "translate": "使用すると、誰も割り当てられていないものが表示されます。"
-            },
-            {
-                "selectors": [
-                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.protip"
-                ],
-                "properties": [],
-                "contains": [
-                    "Exclude your own issues with"
-                ],
-                "translate": "",
-                "append": "を使用すると、あなたが作成したイシューを除外します。"
-            },
-            {
-                "selectors": [
-                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.protip"
-                ],
-                "properties": [],
-                "replace": "Notify someone on an issue with a mention, like: ",
-                "translate": "次のようなメンションでイシューについて誰かに通知します："
-            },
-            {
-                "selectors": [
-                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.protip"
-                ],
-                "properties": [],
-                "contains": [
-                    "Find all open issues with in progress development work with"
-                ],
-                "replace": "Find all open issues with in progress development work with",
-                "translate": "",
-                "append": "で、進行中の開発作業で未解決のイシューを見つける"
-            },
-            {
-                "selectors": [
-                    "div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.protip"
-                ],
-                "properties": [],
-                "replace": " will show everything without a milestone.",
-                "translate": "で、マイルストーンのないイシューを表示します。"
-            },
         ]
     },
     {
@@ -2423,7 +2332,7 @@ var json = [
     },
     {
         "name": "Repository actions",
-        "path": "^\/[a-zA-Z0-9](?:[a-zA-Z0-9]|-(?=[a-zA-Z0-9])){0,38}\/[a-zA-Z0-9](?:[a-zA-Z0-9]|-(?=[a-zA-Z0-9])){0,100}\/actions(\/.*)*$",
+        "path": "^\/[a-zA-Z0-9](?:[a-zA-Z0-9]|-(?=[a-zA-Z0-9])){0,38}\/[a-zA-Z0-9](?:[a-zA-Z0-9]|-(?=[a-zA-Z0-9])){0,100}\/(actions|runs).*$",
         "rules": [
             {
                 "selectors": [
@@ -2490,11 +2399,12 @@ var json = [
             {
                 "selectors": [
                     "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div > div.flex-auto.col-12.col-lg-8 > div.d-flex.flex-row.flex-lg-row > details > details-menu > details > summary",
-                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.js-updatable-content.js-socket-channel.d-flex.flex-items-start.flex-md-items-center.pb-3.pb-md-4.pl-0.pl-md-2.mt-n2.mb-1.ml-1 > div.d-none.d-md-flex.flex-self-start.ml-n1.ml-md-0 > div.d-flex.flex-justify-end > details > ul > li.mt-1 > details > summary"
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.js-updatable-content.js-socket-channel.d-flex.flex-items-start.flex-md-items-center.pb-3.pb-md-4.pl-0.pl-md-2.mt-n2.mb-1.ml-1 > div.d-none.d-md-flex.flex-self-start.ml-n1.ml-md-0 > div.d-flex.flex-justify-end > details > ul > li.mt-1 > details > summary",
+                    "#js-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.js-updatable-content.js-socket-channel.d-flex.flex-items-start.flex-md-items-center.pb-3.pb-md-4.pl-0.pl-md-2.mt-n2.mb-1.ml-1 > div.d-none.d-md-flex.flex-self-start.ml-n1.ml-md-0 > div.d-flex.flex-justify-end > details > ul > li.mt-1 > details > summary"
                 ],
                 "properties": [],
                 "replace": "Create status badge",
-                "translate": "ステータスバッジを作成"
+                "translate": "実行結果バッジを作成"
             },
             {
                 "selectors": [
@@ -2521,6 +2431,16 @@ var json = [
                 "properties": [],
                 "contains": [" workflow run results"],
                 "replace": " workflow run results",
+                "translate": "",
+                "append": "つのワークフローの実行結果"
+            },
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div > div.flex-auto.col-12.col-lg-8 > div.Box.Box--responsive.mt-3 > div.Box-header.d-flex.flex-justify-between > div > div > strong"
+                ],
+                "properties": [],
+                "contains": [" workflow run result"],
+                "replace": " workflow run result",
                 "translate": "",
                 "append": "つのワークフローの実行結果"
             },
@@ -2719,7 +2639,8 @@ var json = [
             {
                 "selectors": [
                     "div > div.d-table-cell.v-align-middle.col-1.col-md-3.text-small > div > div.text-right > details > ul > li > a",
-                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.js-updatable-content.js-socket-channel.d-flex.flex-items-start.flex-md-items-center.pb-3.pb-md-4.pl-0.pl-md-2.mt-n2.mb-1.ml-1 > div.d-none.d-md-flex.flex-self-start.ml-n1.ml-md-0 > div.d-flex.flex-justify-end > details > ul > li > a"
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.js-updatable-content.js-socket-channel.d-flex.flex-items-start.flex-md-items-center.pb-3.pb-md-4.pl-0.pl-md-2.mt-n2.mb-1.ml-1 > div.d-none.d-md-flex.flex-self-start.ml-n1.ml-md-0 > div.d-flex.flex-justify-end > details > ul > li > a",
+                    "#js-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.js-updatable-content.js-socket-channel.d-flex.flex-items-start.flex-md-items-center.pb-3.pb-md-4.pl-0.pl-md-2.mt-n2.mb-1.ml-1 > div.d-none.d-md-flex.flex-self-start.ml-n1.ml-md-0 > div.d-flex.flex-justify-end > details > ul > li > a"
                 ],
                 "properties": [],
                 "replace": "View workflow file",
@@ -2769,7 +2690,17 @@ var json = [
             },
             {
                 "selectors": [
-                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.d-flex.flex-column.flex-md-row > nav > div > div > ul > li:nth-child(1) > a"
+                    "div > div.d-table-cell.v-align-middle.col-1.col-md-3.text-small > div > div.d-none.d-md-block > details > summary > span"
+                ],
+                "properties": [],
+                "addClasses": [
+                    "gh-ja-time"
+                ]
+            },
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.d-flex.flex-column.flex-md-row > nav > div > div > ul > li:nth-child(1) > a",
+                    "nav > div > div > ul > li:nth-child(1) > a"
                 ],
                 "properties": [],
                 "replace": "Summary",
@@ -2809,7 +2740,8 @@ var json = [
             },
             {
                 "selectors": [
-                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.js-updatable-content.js-socket-channel.d-flex.flex-items-start.flex-md-items-center.pb-3.pb-md-4.pl-0.pl-md-2.mt-n2.mb-1.ml-1 > div.d-none.d-md-flex.flex-self-start.ml-n1.ml-md-0 > div.mr-2.pt-1 > details > summary"
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.js-updatable-content.js-socket-channel.d-flex.flex-items-start.flex-md-items-center.pb-3.pb-md-4.pl-0.pl-md-2.mt-n2.mb-1.ml-1 > div.d-none.d-md-flex.flex-self-start.ml-n1.ml-md-0 > div.mr-2.pt-1 > details > summary",
+                    "#js-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.js-updatable-content.js-socket-channel.d-flex.flex-items-start.flex-md-items-center.pb-3.pb-md-4.pl-0.pl-md-2.mt-n2.mb-1.ml-1 > div.d-none.d-md-flex.flex-self-start.ml-n1.ml-md-0 > div.mr-2.pt-1 > details > summary"
                 ],
                 "properties": [],
                 "replace": "Re-run jobs",
@@ -2817,7 +2749,8 @@ var json = [
             },
             {
                 "selectors": [
-                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.js-updatable-content.js-socket-channel.d-flex.flex-items-start.flex-md-items-center.pb-3.pb-md-4.pl-0.pl-md-2.mt-n2.mb-1.ml-1 > div.d-none.d-md-flex.flex-self-start.ml-n1.ml-md-0 > div.mr-2.pt-1 > details > ul > li > form > button"
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.js-updatable-content.js-socket-channel.d-flex.flex-items-start.flex-md-items-center.pb-3.pb-md-4.pl-0.pl-md-2.mt-n2.mb-1.ml-1 > div.d-none.d-md-flex.flex-self-start.ml-n1.ml-md-0 > div.mr-2.pt-1 > details > ul > li > form > button",
+                    "#js-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.js-updatable-content.js-socket-channel.d-flex.flex-items-start.flex-md-items-center.pb-3.pb-md-4.pl-0.pl-md-2.mt-n2.mb-1.ml-1 > div.d-none.d-md-flex.flex-self-start.ml-n1.ml-md-0 > div.mr-2.pt-1 > details > ul > li > form > button"
                 ],
                 "properties": [],
                 "replace": "Re-run all jobs",
@@ -2825,11 +2758,384 @@ var json = [
             },
             {
                 "selectors": [
-                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.js-updatable-content.js-socket-channel.d-flex.flex-items-start.flex-md-items-center.pb-3.pb-md-4.pl-0.pl-md-2.mt-n2.mb-1.ml-1 > div.d-none.d-md-flex.flex-self-start.ml-n1.ml-md-0 > div.d-flex.flex-justify-end > details > ul > li > form > button"
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.js-updatable-content.js-socket-channel.d-flex.flex-items-start.flex-md-items-center.pb-3.pb-md-4.pl-0.pl-md-2.mt-n2.mb-1.ml-1 > div.d-none.d-md-flex.flex-self-start.ml-n1.ml-md-0 > div.mr-2.pt-1 > details > ul > li > form > button",
+                    "#js-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.js-updatable-content.js-socket-channel.d-flex.flex-items-start.flex-md-items-center.pb-3.pb-md-4.pl-0.pl-md-2.mt-n2.mb-1.ml-1 > div.d-none.d-md-flex.flex-self-start.ml-n1.ml-md-0 > div.mr-2.pt-1 > details > ul > li > form > button"
+                ],
+                "properties": [
+                    "data-confirm",
+                    "type"
+                ],
+                "replace": "Are you sure you want to delete all logs for this run?",
+                "translate": "全てのJobを再実行"
+            },
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.js-updatable-content.js-socket-channel.d-flex.flex-items-start.flex-md-items-center.pb-3.pb-md-4.pl-0.pl-md-2.mt-n2.mb-1.ml-1 > div.d-none.d-md-flex.flex-self-start.ml-n1.ml-md-0 > div.d-flex.flex-justify-end > details > ul > li > form > button",
+                    "#js-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.js-updatable-content.js-socket-channel.d-flex.flex-items-start.flex-md-items-center.pb-3.pb-md-4.pl-0.pl-md-2.mt-n2.mb-1.ml-1 > div.d-none.d-md-flex.flex-self-start.ml-n1.ml-md-0 > div.d-flex.flex-justify-end > details > ul > li:nth-child(4) > form > button"
                 ],
                 "properties": [],
                 "replace": "Delete all logs",
-                "translate": "すべてのログを削除"
+                "translate": "この実行のすべてのログを削除してもよろしいですか？"
+            },
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.d-flex.flex-column.flex-md-row > div > div > div.js-updatable-content.js-socket-channel.actions-workflow-stats.actions-fullwidth-module.color-bg-canvas.Box.box-shadow.mb-3.pb-3.px-3.border.border-top-0.border-md-top.rounded-1 > div > div > a"
+                ],
+                "properties": [
+                    "href"
+                ],
+                "contains": [
+                    "billing"
+                ],
+                "addClasses": [
+                    "gh-ja-time"
+                ]
+            },
+            {
+                "selectors": [
+                    "summary > div > div.text-mono"
+                ],
+                "properties": [],
+                "addClasses": [
+                    "gh-ja-time"
+                ]
+            },
+            {
+                "selectors": [
+                    "#js-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.d-flex.flex-column.flex-md-row > nav > div > div > ul > li > div"
+                ],
+                "properties": [],
+                "replace": "Jobs",
+                "translate": "Job"
+            },
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.d-flex.flex-column.flex-md-row > div > div > div > div > div > div > h4"
+                ],
+                "properties": [],
+                "replace": "Annotations",
+                "translate": "注釈"
+            },
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div.d-flex.flex-column.flex-md-row > div > div > div > div > div > div > div"
+                ],
+                "properties": [],
+                "replace": "warning",
+                "translate": "警告"
+            },
+            {
+                "selectors": [
+                    "#name"
+                ],
+                "properties": [
+                    "placeholder"
+                ],
+                "replace": "Search logs",
+                "translate": "ログを検索"
+            },
+            {
+                "selectors": [
+                    "#logs > div.uxr_CheckRun-header.CheckRun-header.mb-2.d-flex.flex-justify-between.flex-items-center.mb-1.py-3.pr-3.js-checks-log-toolbar.rounded-top-0.rounded-md-top-1.pl-3.pl-md-4 > div > details > details-menu > label"
+                ],
+                "properties": [],
+                "replace": "Show timestamps",
+                "translate": "タイムスタンプを表示"
+            },
+            {
+                "selectors": [
+                    "#logs > div.uxr_CheckRun-header.CheckRun-header.mb-2.d-flex.flex-justify-between.flex-items-center.mb-1.py-3.pr-3.js-checks-log-toolbar.rounded-top-0.rounded-md-top-1.pl-3.pl-md-4 > div > details > details-menu > label"
+                ],
+                "properties": [],
+                "replace": "Show full screen",
+                "translate": "フルスクリーン表示"
+            },
+            {
+                "selectors": [
+                    "#logs > div.uxr_CheckRun-header.CheckRun-header.mb-2.d-flex.flex-justify-between.flex-items-center.mb-1.py-3.pr-3.js-checks-log-toolbar.rounded-top-0.rounded-md-top-1.pl-3.pl-md-4 > div > details > details-menu > a"
+                ],
+                "properties": [],
+                "replace": "Download log archive",
+                "translate": "ログをダウンロード"
+            },
+            {
+                "selectors": [
+                    "#logs > div.uxr_CheckRun-header.CheckRun-header.mb-2.d-flex.flex-justify-between.flex-items-center.mb-1.py-3.pr-3.js-checks-log-toolbar.rounded-top-0.rounded-md-top-1.pl-3.pl-md-4 > div > details > details-menu > a"
+                ],
+                "properties": [],
+                "replace": "View raw logs",
+                "translate": "生ログを表示"
+            },
+        ]
+    },
+    {
+        "name": "Project page",
+        "path": "^\/[a-zA-Z0-9](?:[a-zA-Z0-9]|-(?=[a-zA-Z0-9])){0,38}\/[a-zA-Z0-9](?:[a-zA-Z0-9]|-(?=[a-zA-Z0-9])){0,100}\/projects.*$",
+        "rules": [
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.clearfix.py-3 > div.col-lg-8.col-md-7.col-sm-12.float-left > p.f1"
+                ],
+                "properties": [],
+                "replace": "Organize your issues with project boards",
+                "translate": "プロジェクトボードでイシューを整理"
+            },
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.clearfix.py-3 > div.col-lg-8.col-md-7.col-sm-12.float-left > p.color-text-secondary"
+                ],
+                "properties": [],
+                "replace": "Did you know you can manage projects in the same place you keep your code? Set up a project board on GitHub to streamline and automate your workflow.",
+                "translate": "コードを保持と同じ場所でプロジェクトを管理できることをご存知ですか？ GitHubにプロジェクトボードをセットアップして、ワークフローを合理化および自動化しましょう。"
+            },
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.clearfix.py-3 > div.col-lg-4.col-md-5.col-sm-12.float-left.text-lg-right.text-md-right.text-sm-left.py-3 > a"
+                ],
+                "properties": [],
+                "replace": "Learn More",
+                "translate": "もっと学ぶ"
+            },
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.clearfix.py-3 > div.col-lg-4.col-md-5.col-sm-12.float-left.text-lg-right.text-md-right.text-sm-left.py-3 > a"
+                ],
+                "properties": [],
+                "replace": "Create a project",
+                "translate": "新規作成"
+            },
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.d-flex.flex-wrap > div > p.f3"
+                ],
+                "properties": [],
+                "replace": "Sort tasks",
+                "translate": "タスクを並べ替え"
+            },
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.d-flex.flex-wrap > div > p.color-text-secondary"
+                ],
+                "properties": [],
+                "replace": "Add issues and pull requests to your board and prioritize them alongside note cards containing ideas or task lists.",
+                "translate": "ボードにイシューを追加してリクエストをプルし、アイデアやタスクリストを含むノートカードと一緒に優先順位を付けます。"
+            },
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.d-flex.flex-wrap > div > p.f3"
+                ],
+                "properties": [],
+                "replace": "Plan your project",
+                "translate": "プロジェクトをプラン"
+            },
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.d-flex.flex-wrap > div > p.color-text-secondary"
+                ],
+                "properties": [],
+                "replace": "Sort tasks into columns by status. You can label columns with status indicators like \"To Do\", \"In Progress\", and \"Done\".",
+                "translate": "タスクを状態別に列に並べ替えます。 「ToDo」、「In Progress」、「Done」などの状態表示で列にラベルを付けることができます。"
+            },
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.d-flex.flex-wrap > div > p.f3"
+                ],
+                "properties": [],
+                "replace": "Automate your workflow",
+                "translate": "ワークフローを自動化"
+            },
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.d-flex.flex-wrap > div > p.color-text-secondary"
+                ],
+                "properties": [],
+                "replace": "Set up triggering events to save time on project management—we’ll move tasks into the right columns for you.",
+                "translate": "プロジェクト管理の時間を節約するためにトリガーイベントを設定します。タスクを適切な列に移動します。"
+            },
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.d-flex.flex-wrap > div > p.f3"
+                ],
+                "properties": [],
+                "replace": "Track progress",
+                "translate": "進捗状況を追跡"
+            },
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.d-flex.flex-wrap > div > p.color-text-secondary"
+                ],
+                "properties": [],
+                "replace": "Keep track of everything happening in your project and see exactly what’s changed since the last time you looked.",
+                "translate": "プロジェクトで起こっていることすべてを追跡し、最後に見たときから何が変わったかを正確に確認します。"
+            },
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.d-flex.flex-wrap > div > p.f3"
+                ],
+                "properties": [],
+                "replace": "Share status",
+                "translate": "ステータスをシェア"
+            },
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.d-flex.flex-wrap > div > p.color-text-secondary"
+                ],
+                "properties": [],
+                "replace": "Each card has a unique URL, making it easy to share and discuss individual tasks with your team.",
+                "translate": "各カードにはユニークURLがあり、チームと個々のタスクを簡単に共有して話し合うことができます。"
+            },
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.d-flex.flex-wrap > div > p.f3"
+                ],
+                "properties": [],
+                "replace": "Wrap up",
+                "translate": "仕上げ"
+            },
+            {
+                "selectors": [
+                    "body > div.application-main > div > main > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div.d-flex.flex-wrap > div > p.color-text-secondary"
+                ],
+                "properties": [],
+                "replace": "After you wrap up your work, close your project board to remove it from your active projects list. On to the next project!",
+                "translate": "作業を終えたら、プロジェクトボードを閉じて、アクティブなプロジェクトリストから削除します。すぐに次のプロジェクトへ！"
+            },
+        ]
+    },
+    {
+        "name": "Project create new page",
+        "path": "^\/[a-zA-Z0-9](?:[a-zA-Z0-9]|-(?=[a-zA-Z0-9])){0,38}\/[a-zA-Z0-9](?:[a-zA-Z0-9]|-(?=[a-zA-Z0-9])){0,100}\/projects\/new\/*$",
+        "rules": [
+            {
+                "selectors": [
+                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div > div.Subhead-description"
+                ],
+                "properties": [],
+                "replace": "Coordinate, track, and update your work in one place, so projects stay transparent and on schedule.",
+                "translate": "仕事の調整、追跡、更新を一箇所で行うため、プロジェクトは透明性が高く、スケジュール通りに進行します。"
+            },
+            {
+                "selectors": [
+                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > div > div.Subhead-heading"
+                ],
+                "properties": [],
+                "replace": "Create a new project",
+                "translate": "プロジェクトボードを新規作成"
+            },
+            {
+                "selectors": [
+                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > form > dl > dt > label"
+                ],
+                "properties": [],
+                "replace": "Project board name",
+                "translate": "プロジェクトボードの名前"
+            },
+            {
+                "selectors": [
+                    "#project_name"
+                ],
+                "properties": [
+                    "placeholder"
+                ],
+                "replace": "Project board name",
+                "translate": "プロジェクトボードの名前"
+            },
+            {
+                "selectors": [
+                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > form > dl > dt > label"
+                ],
+                "properties": [],
+                "replace": "Description",
+                "translate": "説明"
+            },
+            {
+                "selectors": [
+                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > form > dl > dt > label > span"
+                ],
+                "properties": [],
+                "replace": "optional",
+                "translate": "任意"
+            },
+            {
+                "selectors": [
+                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > form > div.form-group.my-4 > p.mb-1 > strong"
+                ],
+                "properties": [],
+                "replace": "Project template",
+                "translate": "プロジェクトのテンプレート"
+            },
+            {
+                "selectors": [
+                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > form > div.form-group.my-4 > p.text-gray"
+                ],
+                "properties": [],
+                "replace": "Save yourself time with a pre-configured project board template.",
+                "translate": "事前に設定されたテンプレートを使用し、時間を節約します。"
+            },
+            {
+                "selectors": [
+                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > form > div.form-group.my-4 > details > summary > i"
+                ],
+                "properties": [],
+                "replace": "Template",
+                "translate": "テンプレート"
+            },
+            {
+                "selectors": [
+                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > form > div.form-group.my-4 > details > details-menu > div.select-menu-header > span"
+                ],
+                "properties": [],
+                "replace": "Templates",
+                "translate": "テンプレート"
+            },
+            {
+                "selectors": [
+                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > form > div.form-group.my-4 > details > details-menu > div.select-menu-list > label > div > span.select-menu-item-heading",
+                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > form > div.form-group.my-4 > details > summary > span"
+                ],
+                "properties": [],
+                "replace": "None",
+                "translate": "なし"
+            },
+            {
+                "selectors": [
+                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > form > div.form-group.my-4 > details > details-menu > div.select-menu-list > label > div > span.text-normal"
+                ],
+                "properties": [],
+                "replace": "Start from scratch with a completely blank project board. You can add columns and configure automation settings yourself.",
+                "translate": "完全空白のプロジェクトボードから始めます。列の追加、自動化設定を自分で設定できます。"
+            },
+            {
+                "selectors": [
+                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > form > div.form-group.my-4 > details > details-menu > div.select-menu-list > label > div > span.text-normal"
+                ],
+                "properties": [],
+                "replace": "Basic kanban-style board with columns for To do, In progress and Done.",
+                "translate": "To do、In progress、Doneの列がある基本的なかんばんスタイルのボード。"
+            },
+            {
+                "selectors": [
+                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > form > div.form-group.my-4 > details > details-menu > div.select-menu-list > label > div > span.text-normal"
+                ],
+                "properties": [],
+                "replace": "Kanban-style board with built-in triggers to automatically move issues and pull requests across To do, In progress and Done columns.",
+                "translate": "トリガーが組み込まれたかんばんスタイルのボードで、イシューを自動的に移動し、[実行]、[進行中]、[完了] の列でリクエストをプルします。"
+            },
+            {
+                "selectors": [
+                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > form > div.form-group.my-4 > details > details-menu > div.select-menu-list > label > div > span.text-normal"
+                ],
+                "properties": [],
+                "replace": "Everything included in the Automated kanban template with additional triggers for pull request reviews.",
+                "translate": "自動かんばんテンプレートに含まれるすべてのものと、プルリクエストレビュー用の追加トリガー。"
+            },
+            {
+                "selectors": [
+                    "#js-repo-pjax-container > div.container-xl.clearfix.new-discussion-timeline.px-3.px-md-4.px-lg-5 > div > div > form > div.form-group.my-4 > details > details-menu > div.select-menu-list > label > div > span.text-normal"
+                ],
+                "properties": [],
+                "replace": "Triage and prioritize bugs with columns for To do, High priority, Low priority, and Closed.",
+                "translate": "To do、High priority、Low priority、およびClosedの列を使用して、バグの優先順位を付けをします。"
             },
         ]
     },
@@ -2967,6 +3273,7 @@ function main(domr) {
             var append = obj.append;
             var ignoreCase = obj.ignoreCase ? true: false;
             var override = obj.override;
+            var add = obj.addClasses;
 
             var doms;
             if (!override && rules.selector != undefined && rules.selector != null)
@@ -2981,14 +3288,14 @@ function main(domr) {
                     if (domr != undefined && domr != null && dom != null && !dom == domr)
                         return;
                     props.forEach((prop) => {
-                        tr(dom, translate, prop, obj["replace"], format, contains, append, ignoreCase);
+                        tr(dom, translate, prop, obj["replace"], format, contains, append, ignoreCase, add);
                     });
                     if (props.length == 0 && format != undefined)
-                        tr(dom, translate, null, obj["replace"], format, contains, append, ignoreCase)
+                        tr(dom, translate, null, obj["replace"], format, contains, append, ignoreCase, add)
                     else if (props.length == 0 && obj["replace"] == undefined)
-                         tr(dom, translate, null, null, format, contains, append, ignoreCase)
+                         tr(dom, translate, null, null, format, contains, append, ignoreCase, add)
                     else if (obj["replace"] != undefined)
-                        tr(dom, translate, null, obj["replace"], format, contains, append, ignoreCase);
+                        tr(dom, translate, null, obj["replace"], format, contains, append, ignoreCase, add);
                 });
 
             }
@@ -3033,6 +3340,9 @@ document.kill = () => {
     enable = false;
 }
 
+document.update = () => {
+    main(null)
+}
 function cca (str, array, ignoreCase) {
     var a = false;
     array.forEach((ab) => {
@@ -3050,9 +3360,14 @@ function lower(str, ignoreCase)
     return ignoreCase ? str.ignoreCase(): str;
 }
 
-function tr(dom, translate, prop, replace, format, contains, append, ignoreCase) {
+function tr(dom, translate, prop, replace, format, contains, append, ignoreCase, add) {
     if (dom == undefined || dom == null)
         return;
+
+    if (contains == null || (contains && !prop && cca(dom.innerHTML, contains, ignoreCase)) || (contains && prop && dom[prop] && cca(dom[prop], contains, ignoreCase)))
+        if (add && add.length != 0)
+            add.forEach(s => dom.classList.add(s))
+
     if (translate != undefined)
     {
         if (prop != null)
@@ -3061,14 +3376,14 @@ function tr(dom, translate, prop, replace, format, contains, append, ignoreCase)
                 return;
             if (replace != null && dom[prop] != undefined)
             {
-                var a = lower(dom[prop], ignoreCase).replace(lower(replace, ignoreCase), translate) + (append != undefined && append != null ? append: "");
-                if (a != dom[prop].toLowerCase())
+                var a = dom[prop].replace(replace, translate) + (append != undefined && append != null ? append: "");
+                if (a != dom[prop])
                     dom[prop] = a;
             }
             else
             {
                 var ate = translate + (append != undefined && append != null ? append: "");
-                if (ate != lower(dom[prop], ignoreCase))
+                if (ate != dom[prop])
                     dom[prop] = ate;
             }
         }
@@ -3076,10 +3391,11 @@ function tr(dom, translate, prop, replace, format, contains, append, ignoreCase)
         {
             if (contains != undefined && contains != null && !cca(dom.innerHTML, contains, ignoreCase))
                 return;
+
             if (replace != null)
             {
-                var kawr = lower(dom.innerHTML, ignoreCase).replace(lower(replace, ignoreCase), translate) + (append != undefined && append != null ? append: "");
-                if (lower(dom.innerHTML, ignoreCase) != kawr)
+                var kawr = dom.innerHTML.replace(replace, translate) + (append != undefined && append != null ? append: "");
+                if (dom.innerHTML != kawr)
                     dom.innerHTML = kawr
             }
             else
@@ -3114,7 +3430,17 @@ function tr(dom, translate, prop, replace, format, contains, append, ignoreCase)
               if (contains != undefined && contains != null && cca(dom.innerHTML, contains, ignoreCase))
               {
                   var inn =  format.format(document.querySelector(replace).outerHTML) + (append != undefined && append != null ? append: "");
-                  if (inn != dom.innerHTML)
-                      dom.innerHTML = inn;
+                  if (inn != dom.outerHTML)
+                      dom.outerHTML = inn;
               }
 }
+
+
+
+
+
+
+
+
+
+
