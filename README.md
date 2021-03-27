@@ -1,3 +1,5 @@
+# GitHub側の仕様変更により、機能しなくなりました。
+誰か手伝ってくれるなら[ここ](https://twitter.com/peyang9799) に連絡してほしいな
 # GithubJapanese
 GitHubを日本語化するユーザスクリプトです。
 ## 注意
